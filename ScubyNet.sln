@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScubyNet", "ScubyNet.csproj", "{96E01874-6885-4E3F-AAFA-432F09122E35}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96E01874-6885-4E3F-AAFA-432F09122E35}.Debug|x86.ActiveCfg = Debug|x86
+		{96E01874-6885-4E3F-AAFA-432F09122E35}.Debug|x86.Build.0 = Debug|x86
+		{96E01874-6885-4E3F-AAFA-432F09122E35}.Release|x86.ActiveCfg = Release|x86
+		{96E01874-6885-4E3F-AAFA-432F09122E35}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = ScubyNet.csproj
+	EndGlobalSection
+EndGlobal
