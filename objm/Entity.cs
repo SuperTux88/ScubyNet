@@ -24,7 +24,10 @@ namespace ScubyNet.obj
 		public int Radius { get { return mlRadius; } set { mlRadius	= value; } }
 		
 		public double DistanceTo(Entity voEnt) {
-			return 12.34;  // TODO!!
+            return Math.Sqrt(
+                       Math.Pow((voEnt.PosX - this.PosX), 2) 
+                     + Math.Pow((voEnt.PosY - this.PosY), 2)
+                   );
 		}
 	}
 }
