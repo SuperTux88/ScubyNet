@@ -77,10 +77,16 @@
     <Compile Include="inp\InpScript.cs" />
     <Compile Include="inp\InpEvent.cs" />
     <Compile Include="net\PackAction.cs" />
+    <Compile Include="inp\cmd\CmdMove.cs" />
+    <Compile Include="inp\InpCommand.cs" />
+    <Compile Include="inp\cmd\CmdStop.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
   <ItemGroup>
     <None Include="inp\inp.lang.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="inp\cmd\" />
   </ItemGroup>
 </Project>

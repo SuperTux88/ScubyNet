@@ -111,6 +111,11 @@ namespace ScubyNet.net
 			return fRet;
 		}
 		
+		protected static void readBytesFrom(ref byte[] rbData, int vlPos, ref byte[] vbValue) {
+			for (int i=0 ; i<vbValue.Length; i++) 
+				vbValue[i] = rbData[vlPos + i];
+		}
+		
 		public static Packet Read(Connection c) {
 			byte[] abHead = new byte[6];
 			int len = 0;
@@ -130,8 +135,6 @@ namespace ScubyNet.net
 				oRet = (Packet)Assembly.GetExecutingAssembly().CreateInstance(types[id].FullName);
 				oRet.createFromData(ref abData);
 			} else {
-				if (id != 0 && id != 3)
-				Console.WriteLine("Packetid " + id + " not implemented");
 				oRet = new PackUnknown();
 				
 			}
