@@ -37,6 +37,16 @@ namespace ScubyNet.obj
 			return oRet;
 		}
 		
+		// Collisions
+		
+		// 
+		
+		// all players als List<Player>
+		
+		// all shots als List<Shot>
+		
+		// all * by Condition
+		
 		internal void WorldTrip() {
 			List<long> ids = new List<long>();
 			foreach (Shot oShot in mcoShots.Values) {

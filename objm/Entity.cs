@@ -22,6 +22,10 @@ namespace ScubyNet.obj
 		public double PosY { get { return mfY; } set { mfY = value; } }
 		public double Direction { get { return mfDir; } set { mfDir = value; } }
 		public int Radius { get { return mlRadius; } set { mlRadius	= value; } }
+		
+		public double DistanceTo(Entity voEnt) {
+			return 12.34;  // TODO!!
+		}
 	}
 }
 
