@@ -9,7 +9,7 @@ namespace ScubyNet.inp
 		public static Dictionary<string, InpCommand> mcCommands = new Dictionary<string, InpCommand>();
 		
 		static InpCommand() {
-			// todo: collect commands and store into dict 
+			Console.WriteLine("collecting commands");
 			foreach (Type t in Assembly.GetExecutingAssembly().GetTypes()) {
 				if (t.Namespace.Equals("ScubyNet.inp.cmd")) {
 					InpCommand oCmd = Assembly.GetExecutingAssembly().CreateInstance(t.Name) as InpCommand;
