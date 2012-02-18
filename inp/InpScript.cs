@@ -21,7 +21,8 @@ namespace ScubyNet.inp
 			string sEvent = "";
 			List<string> csBuf = new  List<string>();
 			int num = 0;
-
+			
+			Console.WriteLine("Reading Script " + vsFilename);
 			while (!oSR.EndOfStream) {
 				string line = oSR.ReadLine().Trim();
 				num++;
@@ -29,11 +30,15 @@ namespace ScubyNet.inp
 					if (started) {
 						if (line.StartsWith("!")) {
 							if (sEvent.Length != 0) {
-								
+								InpEvent oEvent = new InpEvent(sEvent, csBuf);
+								oRet.mcoEvents.Add(sEvent, oEvent);
+								csBuf.Clear();
 							}
 						} else {
 							if (sEvent.Length == 0) {
 								Console.WriteLine ("expected event at line " + num + ", ignoring line");
+							} else { 
+								csBuf.Add(line);
 							}
 						}
 					} else {
@@ -42,6 +47,16 @@ namespace ScubyNet.inp
 					}
 				}
 			}
+			if (sEvent.Length > 0) {
+				InpEvent oEvent = new InpEvent(sEvent, csBuf);
+				oRet.mcoEvents.Add(sEvent, oEvent);
+			}
+			
+			Console.WriteLine("Checking...");
+			foreach (InpEvent oEvent in oRet.mcoEvents.Values) {
+				
+			}
+			
 			return oRet;
 		}
 		

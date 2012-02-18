@@ -34,7 +34,7 @@ namespace ScubyNet.obj
 			this.Fire = voPack.Fire;
 		}
 		
-		public override int Speed { get { return 100; } }
+		public override int Speed { get { return 100; } set { } }
 		public string Name { get { return msName; } set { msName = value; } }
 		public double RotationSpeed { get { return mfRotSpd; } set { mfRotSpd = value; } }
 		public bool Left { get { return mbLeft; } set { mbLeft = value; } }
