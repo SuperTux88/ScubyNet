@@ -1,11 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Connection.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PackShot.cs">
     <Files>
-      <File FileName="Main.cs" Line="15" Column="27" />
-      <File FileName="Packet.cs" Line="36" Column="29" />
-      <File FileName="PackHandshake.cs" Line="36" Column="167" />
-      <File FileName="Connection.cs" Line="26" Column="1" />
+      <File FileName="Main.cs" Line="23" Column="39" />
+      <File FileName="Packet.cs" Line="115" Column="15" />
+      <File FileName="PackHandshake.cs" Line="49" Column="30" />
+      <File FileName="Connection.cs" Line="18" Column="37" />
+      <File FileName="PackUnknown.cs" Line="13" Column="28" />
+      <File FileName="PackPlayer.cs" Line="43" Column="16" />
+      <File FileName="PackShot.cs" Line="11" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
