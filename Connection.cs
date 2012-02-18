@@ -11,16 +11,18 @@ namespace ScubyNet
 	{
 		Socket moSocket = null;
 		
-		public Connection (string vsHost, int vlPort)
+		public Connection (string vsName, string vsHost, int vlPort)
 		{
 			moSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 			
 			moSocket.Connect(vsHost, vlPort);
 			
-			PackHandshake hs = new PackHandshake("dasbinich üöäpqß");
+			PackHandshake hs = new PackHandshake(vsName);
 			if (hs.DoHandshake(this)) {
-				Console.WriteLine("ha");
-				//alles gut
+				Console.WriteLine("Connection established");
+
+				// Connected
+
 			} else { 
 				Console.WriteLine("hs fail");
 				throw new Exception("rgs");

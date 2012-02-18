@@ -1,23 +1,25 @@
 using System;
 
-
+using System.Threading;
 
 namespace ScubyNet
 {
 	class MainClass
 	{
+		private Connection c 
 		public static void Main (string[] args)
 		{
-			//Application.Init ();
-			//MainWindow win = new MainWindow ();
-			//win.Show ();
-			//Application.Run ();
-			Console.WriteLine("test");
 			
-			Connection c = new Connection("gen", 1337);
-			
-			
-			
+			c = new Connection("Player", "gen", 1337);
+					
+			new Thread(new ThreadStart())
+		}
+		
+		public void ProcessPackages() {
+			Packet p;
+			while ((p = Packet.Read(c)) != null) {
+								
+			}
 		}
 	}
 }
