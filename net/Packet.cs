@@ -113,11 +113,14 @@ namespace ScubyNet.net
 		
 		public static Packet Read(Connection c) {
 			byte[] abHead = new byte[6];
-			if (c.RetreiveBytes(ref abHead) != 6)
-				throw new Exception("ouch: malformed head");
+			int len = 0;
+			while (len < 6)
+				len += c.RetreiveBytes(ref abHead, len);
+   			//if (c.RetreiveBytes(ref abHead) != 6)
+			//	throw new Exception("ouch: malformed head");
 			
 			int id = readShortFrom(ref abHead, 0);
-			int len = readIntFrom(ref abHead, 2);
+			len = readIntFrom(ref abHead, 2);
 			
 			byte[] abData = new byte[len];
 			len = c.RetreiveBytes(ref abData);

@@ -73,11 +73,17 @@
     <Compile Include="objm\Player.cs" />
     <Compile Include="objm\Shot.cs" />
     <Compile Include="objm\Entity.cs" />
+    <Compile Include="inp\InpScript.cs" />
+    <Compile Include="inp\InpEvent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="net\" />
     <Folder Include="..\" />
     <Folder Include="objm\" />
+    <Folder Include="inp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="inp\inp.lang.txt" />
   </ItemGroup>
 </Project>

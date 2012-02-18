@@ -5,6 +5,10 @@ namespace ScubyNet.obj
 {
 	public class World
 	{
+		public delegate void NewShotHandler(long id);
+		
+		public event NewShotHandler NewShot;
+		
 		private Dictionary<long, Player> mcoPlayers = new Dictionary<long, Player>();
 		private Dictionary<long, Shot> mcoShots = new Dictionary<long, Shot>();
 		
@@ -28,6 +32,7 @@ namespace ScubyNet.obj
 			} else { 
 				oRet = new Shot(this, id);
 				mcoShots.Add(id, oRet);
+				NewShot(id);
 			}
 			return oRet;
 		}

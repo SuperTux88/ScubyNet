@@ -1,0 +1,30 @@
+blaaaaabla
+hier comments und so
+fängt alles erst an wenn folgendes gefunden wird:
+
+
+itsnotpython
+
+
+!IDLE:
+
+
+!SPAWN:
+
+DANGER = [menge] [submenge] BY (MIN|max) [order] MATCHING|IN|IS in range
+
+// menge     = ALL OTHER OUR MY 
+// submenfe  = PLAYER SHOT ENTITY COLLISION
+// order     = NONE DISTANCE AGE LIFETIME TARGETTIME
+
+// HEAD_ME
+
+
+DANGER = MY COLLISION BY DISTANCE 
+!DANGER:
+	tuwas!
+
+
+!tuwas:
+
+
