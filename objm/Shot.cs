@@ -30,7 +30,7 @@ namespace ScubyNet.obj
 			return false;
 		}
 		
-		public int Speed { get { return mlSpeed; } set { mlSpeed = value; } }
+		public override int Speed { get { return mlSpeed; } set { mlSpeed = value; } }
 		public long ParentId { get { return mlParentId; } set { mlParentId = value; } }
 		public Player Parent { get { return moParent.GetPlayer(ParentId); } }
 		public double Lifetime { get { return mfLifetime; } set { mfLifetime = value; } }

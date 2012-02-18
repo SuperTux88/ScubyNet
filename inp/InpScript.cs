@@ -7,13 +7,14 @@ namespace ScubyNet.inp
 	public class InpScript
 	{
 		
+		private Dictionary<string, InpEvent> mcoEvents = new Dictionary<string, InpEvent>();
 		
 		private InpScript ()
 		{
 		}
 		
 		public static InpScript TryParse(string vsFilename) {
-			InpScript oRet = null;
+			InpScript oRet = new InpScript();
 			
 			StreamReader oSR = File.OpenText(vsFilename);
 			bool started = false;
@@ -27,10 +28,12 @@ namespace ScubyNet.inp
 				if (line.Length > 0 && !line.StartsWith("//")) { 
 					if (started) {
 						if (line.StartsWith("!")) {
+							if (sEvent.Length != 0) {
+								
+							}
 						} else {
 							if (sEvent.Length == 0) {
-								Console.WriteLine ("expected event at line " + num);
-								return null;
+								Console.WriteLine ("expected event at line " + num + ", ignoring line");
 							}
 						}
 					} else {

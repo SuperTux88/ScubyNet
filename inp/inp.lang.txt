@@ -1,4 +1,4 @@
-blaaaaabla
+blaaaaab;la
 hier comments und so
 fängt alles erst an wenn folgendes gefunden wird:
 
@@ -13,18 +13,27 @@ itsnotpython
 
 DANGER = [menge] [submenge] BY (MIN|max) [order] MATCHING|IN|IS in range
 
-// menge     = ALL OTHER OUR MY 
-// submenfe  = PLAYER SHOT ENTITY COLLISION
+// menge     = (ALL) OTHER OUR MY 
+// submenge  = PLAYER SHOT (ENTITY) COLLISION
 // order     = NONE DISTANCE AGE LIFETIME TARGETTIME
 
 // HEAD_ME
 
+//EV = OTHER SHOT BY DISTANCE
 
-DANGER = MY COLLISION BY DISTANCE 
+
+// DANGER = MY COLLISION BY DISTANCE 
+
 !DANGER:
+	tuwas
 	tuwas!
+	Goto Target
+	shoot
 
-
+!myEvent = OTHER PLAYERS BY DISTANCE:
+	target X
+	shoot
+	
 !tuwas:
 
 
