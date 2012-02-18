@@ -19,7 +19,7 @@ namespace ScubyNet
 		public static void Main (string[] args)
 		{
 			string sName = "Player";
-			string sURL = "gen";
+			string sURL = "10.1.1.128";
 			//string sURL = "test.scubywars.de";
 			int lPort = 1337;
 			

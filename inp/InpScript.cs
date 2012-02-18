@@ -34,6 +34,7 @@ namespace ScubyNet.inp
 								oRet.mcoEvents.Add(sEvent, oEvent);
 								csBuf.Clear();
 							}
+							sEvent = line.Substring(1);
 						} else {
 							if (sEvent.Length == 0) {
 								Console.WriteLine ("expected event at line " + num + ", ignoring line");

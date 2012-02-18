@@ -10,7 +10,13 @@ namespace ScubyNet.inp
 		
 		public InpEvent(string vsEventName, List<string> vcsCommands)
 		{
+			msEventName = vsEventName;
+			msCommands = vcsCommands.ToArray();
 		}
+		
+		public string Name { get { return msEventName; } } 
+		
+		
 		
 		public void Trigger() {
 			

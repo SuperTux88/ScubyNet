@@ -27,7 +27,7 @@ DANGER = [menge] [submenge] BY (MIN|max) [order] MATCHING|IN|IS in range
 !DANGER:
 	tuwas
 	tuwas!
-	Goto Target
+	Goto X
 	shoot
 
 !myEvent = OTHER PLAYERS BY DISTANCE:
