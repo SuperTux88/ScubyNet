@@ -18,7 +18,7 @@ namespace ScubyNet.obj
 		}
 		
 		private void HandleNewShot(long id) {
-			Console.WriteLine("new shot(" + id + "for player " + this.ID);
+			//Console.WriteLine("new shot(" + id + "for player " + this.ID);
 			//boom
 		}
 		

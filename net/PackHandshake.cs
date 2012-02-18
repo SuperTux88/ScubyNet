@@ -31,19 +31,21 @@ namespace ScubyNet.net
 		public string PlayerName { get { return msPlayerName; } }
 		public long PlayerId { get { return mlPlayerId; } }
 		
-		protected override byte[] Build ()
+		internal override byte[] Build ()
 		{
 			byte[] abName = System.Text.Encoding.Convert(System.Text.Encoding.Default, System.Text.Encoding.BigEndianUnicode, System.Text.Encoding.Default.GetBytes(PlayerName));
 			byte[] abRet = new byte[8 + abName.Length];
 			writeShortAt(ref abRet, 0, (int)PacketType.Handshake);
-			writeIntAt(ref abRet, 2, abName.Length);
+			writeIntAt(ref abRet, 2, 2+abName.Length);
 			writeShortAt(ref abRet, 6, 0);
 			writeBytesAt(ref abRet, 8, abName);
 			return abRet;
 		}
 		
 		public bool DoHandshake(Connection c) {
-			c.SendBytes(this.Build());
+			byte[] buffer = this.Build();
+			c.SendBytes(ref buffer);
+			
 			Packet p = Packet.Read(c);
 			if (p == null || !p.GetType().Equals(typeof(PackHandshake)))
 				return false;

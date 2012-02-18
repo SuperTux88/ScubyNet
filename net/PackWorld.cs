@@ -16,7 +16,7 @@ namespace ScubyNet.net
 
         public int EntityCount { get { return miEntityCount; } }
 
-        protected override byte[] Build() { return null; }
+        internal override byte[] Build() { return null; }
 		
 		public override string ToString ()
 		{

@@ -16,7 +16,8 @@ namespace ScubyNet.net
 		public Connection (string vsName, string vsHost, int vlPort)
 		{
 			moSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-			
+			moSocket.NoDelay = true;
+			//moSocket.Blocking = false;
 			moSocket.Connect(vsHost, vlPort);
 			
 			PackHandshake hs = new PackHandshake(vsName);
@@ -25,7 +26,6 @@ namespace ScubyNet.net
 				msName = vsName;
 				mlID = hs.PlayerId;
 				// Connected
-
 			} else { 
 				Console.WriteLine("hs fail");
 				throw new Exception("rgs");
@@ -35,7 +35,7 @@ namespace ScubyNet.net
 		public string Name { get { return msName; } }
 		public long ID { get { return mlID; } }
 		
-		internal void SendBytes(byte[] vbData) {
+		internal void SendBytes(ref byte[] vbData) {
 			moSocket.Send(vbData);
 		}
 		internal int RetreiveBytes(ref byte[] rbData) {

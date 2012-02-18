@@ -37,7 +37,7 @@ namespace ScubyNet.net
 			return this;
 		}
 		
-		protected override byte[] Build ()
+		internal override byte[] Build ()
 		{
 			 return null;
 		}

@@ -10,7 +10,7 @@ namespace ScubyNet.net
 		{
 		}
 		
-		protected override byte[] Build ()
+		internal override byte[] Build ()
 		{
 			return null;
 		}
