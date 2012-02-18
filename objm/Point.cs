@@ -9,15 +9,17 @@ namespace ScubyNet.obj
     {
         private double mPosX;
         private double mPosY;
+        private double mDirection;
 
         public Point()
         {
         }
 
-        public Point(double vdPosX, double vdPosY)
+        public Point(double vdPosX, double vdPosY, double vdDirection)
         {
-            mPosX = vdPosX;
-            mPosY = vdPosY;
+            mPosX      = vdPosX;
+            mPosY      = vdPosY;
+            mDirection = vdDirection;
         }
 
         public double getDistanceTo(Point voPoint){
@@ -27,7 +29,16 @@ namespace ScubyNet.obj
                    );
         }
 
+        public double getAngle(Point voPoint)
+        {
+            return Math.Atan2(
+                    (voPoint.PosY - this.PosY), 
+                    (voPoint.PosX - this.PosX)
+                   );
+        }
+
         public double PosX { get { return mPosX; } set { mPosX = value; } }
         public double PosY { get { return mPosY; } set { mPosY = value; } }
+        public double Direction { get { return mDirection; } set { mPosX = mDirection; } }
     }
 }

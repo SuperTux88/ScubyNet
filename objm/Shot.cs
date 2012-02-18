@@ -15,7 +15,7 @@ namespace ScubyNet.obj
 			mbCease = false;
 			this.Position.PosX = voPacket.PosX;
 			this.Position.PosY = voPacket.PosY;
-			this.Direction  = voPacket.Direction;
+            this.Position.Direction = voPacket.Direction;
 			this.Radius = voPacket.Radius;
 			this.Speed = voPacket.Speed;
 			//this.ParentId = voPacket.ParentId; << sinnfrei, bleibt immer gleich
