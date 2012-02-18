@@ -66,6 +66,8 @@
     <Compile Include="PackHandshake.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="PackUnknown.cs" />
+    <Compile Include="PackPlayer.cs" />
+    <Compile Include="PackShot.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
