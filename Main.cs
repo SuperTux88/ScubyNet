@@ -34,6 +34,7 @@ namespace ScubyNet
 					PackShot oPS = p as PackShot;
 					Shot oShot = moWorld.GetShot(oPS.PlayerId);
 					oShot.UpdateFromPacket(oPS);
+					oShot.Parent.moShot = oShot;
 				}
 				
 			}
