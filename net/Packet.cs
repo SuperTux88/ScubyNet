@@ -11,7 +11,14 @@ namespace ScubyNet.net
 		private static Dictionary<int, Type> types = new Dictionary<int, Type>();  
 		
 		static Packet() {
+			types.Add((int)PacketType.Player, typeof(PackPlayer));
+			types.Add((int)PacketType.Shot, typeof(PackShot));
+			types.Add((int)PacketType.World, typeof(PackWorld));
 			types.Add((int)PacketType.Handshake, typeof(PackHandshake));
+			//types.Add((int)PacketType.Action, typeof(PackAction));
+			//types.Add((int)PacketType.Handshake, typeof(PackHandshake));
+			//types.Add((int)PacketType.Handshake, typeof(PackHandshake));
+			//types.Add((int)PacketType.Handshake, typeof(PackHandshake));
 		}
 		
 		public enum PacketType { 
@@ -92,6 +99,16 @@ namespace ScubyNet.net
 			lRet += rbData[vlPos + 6] << 8;
 			lRet += rbData[vlPos + 7];
 			return lRet;
+		}
+		
+		protected static float readFloatFrom(ref byte[] rbData, int vlPos) {
+			byte[] conv = new byte[4];
+			conv[0] = rbData[vlPos + 3];
+			conv[1] = rbData[vlPos + 2];
+			conv[2] = rbData[vlPos + 1];
+			conv[3] = rbData[vlPos];
+			float fRet = BitConverter.ToSingle(conv, 0);
+			return fRet;
 		}
 		
 		public static Packet Read(Connection c) {

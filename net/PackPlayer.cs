@@ -31,11 +31,11 @@ namespace ScubyNet.net
 		protected override Packet createFromData (ref byte[] rbData)
 		{
 			mlPublicID = readLongFrom(ref rbData, 0);
-			mfX = readIntFrom(ref rbData, 8);
-			mfY = readIntFrom(ref rbData, 12);
-			mfDir = readIntFrom(ref rbData, 16);
+			mfX = readFloatFrom(ref rbData, 8);
+			mfY = readFloatFrom(ref rbData, 12);
+			mfDir = readFloatFrom(ref rbData, 16);
 			mlRadius = readShortFrom(ref rbData, 20);
-			mfRot = readIntFrom(ref rbData, 22);
+			mfRot = readFloatFrom(ref rbData, 22);
 			mbLeft = readByteFrom(ref rbData, 26) != 0;
 			mbRight = readByteFrom(ref rbData, 27) != 0;
 			mbThrust = readByteFrom(ref rbData, 28) != 0;

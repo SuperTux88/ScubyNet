@@ -11,7 +11,7 @@ namespace ScubyNet.net
 		private int mlRadius;
 		private int mlSpeed;
 		private long mlParentId;
-		private int mlLifetime;
+		private float mlLifetime;
 		
 		public PackShot () {}
 		
@@ -22,18 +22,18 @@ namespace ScubyNet.net
 		public int Radius { get { return mlRadius; } }
 		public int Speed { get { return mlSpeed; } }
 		public long ParentId { get { return mlParentId; } }
-		public int Lifetime { get { return mlLifetime; } }
+		public float Lifetime { get { return mlLifetime; } }
 		
 		protected override Packet createFromData (ref byte[] rbData)
 		{
 			mlPublicID = readLongFrom(ref rbData, 0);
-			mfX = readIntFrom(ref rbData, 8);
-			mfY = readIntFrom(ref rbData, 12);
-			mfDir = readIntFrom(ref rbData, 16);
+			mfX = readFloatFrom(ref rbData, 8);
+			mfY = readFloatFrom(ref rbData, 12);
+			mfDir = readFloatFrom(ref rbData, 16);
 			mlRadius = readShortFrom(ref rbData, 20);
 			mlSpeed = readShortFrom(ref rbData, 22);
 			mlParentId = readLongFrom(ref rbData, 24);
-			mlLifetime = readIntFrom(ref rbData, 32);
+			mlLifetime = readFloatFrom(ref rbData, 32);
 			return this;
 		}
 		
