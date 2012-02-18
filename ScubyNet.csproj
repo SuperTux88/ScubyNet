@@ -69,15 +69,15 @@
     <Compile Include="net\PackUnknown.cs" />
     <Compile Include="net\PackWorld.cs" />
     <Compile Include="Main.cs" />
-    <Compile Include="obj\World.cs" />
-    <Compile Include="obj\Player.cs" />
-    <Compile Include="obj\Shot.cs" />
-    <Compile Include="obj\Entity.cs" />
+    <Compile Include="objm\World.cs" />
+    <Compile Include="objm\Player.cs" />
+    <Compile Include="objm\Shot.cs" />
+    <Compile Include="objm\Entity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="net\" />
     <Folder Include="..\" />
-    <Folder Include="obj\" />
+    <Folder Include="objm\" />
   </ItemGroup>
 </Project>
