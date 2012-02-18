@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace ScubyNet
+namespace ScubyNet.net
 {
 	public abstract class Packet
 	{

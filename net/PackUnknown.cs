@@ -1,6 +1,6 @@
 using System;
 
-namespace ScubyNet
+namespace ScubyNet.net
 {
 	public class PackUnknown : Packet
 	{

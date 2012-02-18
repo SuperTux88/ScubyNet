@@ -60,15 +60,19 @@
     <Reference Include="Mono.Posix" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Packet.cs" />
-    <Compile Include="PackHandshake.cs" />
-    <Compile Include="Connection.cs" />
-    <Compile Include="PackUnknown.cs" />
-    <Compile Include="PackWorld.cs" />
-    <Compile Include="PackPlayer.cs" />
-    <Compile Include="PackShot.cs" />
+    <Compile Include="net\Connection.cs" />
+    <Compile Include="net\Packet.cs" />
+    <Compile Include="net\PackHandshake.cs" />
+    <Compile Include="net\PackPlayer.cs" />
+    <Compile Include="net\PackShot.cs" />
+    <Compile Include="net\PackUnknown.cs" />
+    <Compile Include="net\PackWorld.cs" />
+    <Compile Include="Main.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="net\" />
+    <Folder Include="..\" />
+  </ItemGroup>
 </Project>

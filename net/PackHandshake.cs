@@ -2,7 +2,7 @@ using System;
 
 
 
-namespace ScubyNet
+namespace ScubyNet.net
 {
 	public class PackHandshake : Packet
 	{

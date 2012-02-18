@@ -1,6 +1,7 @@
 using System;
 
 using System.Threading;
+using ScubyNet.net;
 
 namespace ScubyNet
 {
