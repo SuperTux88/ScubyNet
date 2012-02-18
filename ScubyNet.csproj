@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -69,6 +69,7 @@
     <Compile Include="net\PackUnknown.cs" />
     <Compile Include="net\PackWorld.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="objm\Point.cs" />
     <Compile Include="objm\World.cs" />
     <Compile Include="objm\Player.cs" />
     <Compile Include="objm\Shot.cs" />
@@ -77,12 +78,7 @@
     <Compile Include="inp\InpEvent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="net\" />
-    <Folder Include="..\" />
-    <Folder Include="objm\" />
-    <Folder Include="inp\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="inp\inp.lang.txt" />
   </ItemGroup>
