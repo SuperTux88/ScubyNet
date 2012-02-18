@@ -47,6 +47,11 @@ namespace ScubyNet
 		{
 			 return null;
 		}
+		
+		public override string ToString ()
+		{
+			return string.Format ("[PackPlayer: PlayerId={0}, PosX={1}, PosY={2}, Direction={3}, Radius={4}, RotationSpeed={5}, Left={6}, Right={7}, Thrust={8}, Fire={9}]", PlayerId, PosX, PosY, Direction, Radius, RotationSpeed, Left, Right, Thrust, Fire);
+		}
 	}
 }
 

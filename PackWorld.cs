@@ -10,14 +10,17 @@ namespace ScubyNet
         
         protected override Packet createFromData(ref byte[] rbData)
         {
-            //throw new NotImplementedException ();
-            PackWorld oRet = new PackWorld();
             miEntityCount = readIntFrom(ref rbData, 0);
-            return oRet;
+            return this;
         }
 
         public int EntityCount { get { return miEntityCount; } }
 
         protected override byte[] Build() { return null; }
+		
+		public override string ToString ()
+		{
+			return string.Format ("[PackWorld: EntityCount={0}]", EntityCount);
+		}
     }
 }

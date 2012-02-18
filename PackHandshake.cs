@@ -18,11 +18,9 @@ namespace ScubyNet
 		public PackHandshake() {}
 		protected override Packet createFromData (ref byte[] rbData)
 		{
-			//throw new NotImplementedException ();
-			PackHandshake oRet = new PackHandshake();
 			int ack = readByteFrom(ref rbData, 0);
 			mlPlayerId = readLongFrom(ref rbData, 1);
-			return oRet;
+			return this;
 		}
 		
 		internal PackHandshake(string vsPlayerName, int vlPlayerId) {
