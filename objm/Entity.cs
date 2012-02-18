@@ -6,8 +6,7 @@ namespace ScubyNet.obj
 	{
 		internal World moParent;
 		private long mlID = -1;
-		private double mfX = 0.0;
-		private double mfY = 0.0;
+        private Point mPos = new Point(0.0, 0.0);
 		private double mfDir = 0.0;
 		private int mlRadius = 0;
 		
@@ -18,18 +17,12 @@ namespace ScubyNet.obj
 		}
 		
 		public long ID { get { return mlID; } }
-		public double PosX { get { return mfX; } set { mfX = value; } }
-		public double PosY { get { return mfY; } set { mfY = value; } }
+        
 		public double Direction { get { return mfDir; } set { mfDir = value; } }
 		public int Radius { get { return mlRadius; } set { mlRadius	= value; } }
-		public int Speed { get; }
-		
-		public double DistanceTo(Entity voEnt) {
-            return Math.Sqrt(
-                       Math.Pow((voEnt.PosX - this.PosX), 2) 
-                     + Math.Pow((voEnt.PosY - this.PosY), 2)
-                   );
-		}
+        public virtual int Speed { get { return 0; } set { } }
+        public Point Position { get { return mPos; } }
+
 	}
 }
 

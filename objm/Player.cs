@@ -23,8 +23,8 @@ namespace ScubyNet.obj
 		}
 		
 		public void UpdateFromPacket(ScubyNet.net.PackPlayer voPack) {
-			this.PosX = voPack.PosX;
-			this.PosY = voPack.PosY;
+			this.Position.PosX = voPack.PosX;
+			this.Position.PosY = voPack.PosY;
 			this.Direction = voPack.Direction;
 			this.Radius = voPack.Radius;
 			this.RotationSpeed = voPack.RotationSpeed;
