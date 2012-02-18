@@ -105,8 +105,16 @@ namespace ScubyNet
 			byte[] abData = new byte[len];
 			len = c.RetreiveBytes(ref abData);
 			
-			Packet oRet = (Packet)Assembly.GetExecutingAssembly().CreateInstance(types[id].FullName);
-			oRet.createFromData(ref abData);
+			Packet oRet = null;
+			if (types.ContainsKey(id)) {
+				oRet = (Packet)Assembly.GetExecutingAssembly().CreateInstance(types[id].FullName);
+				oRet.createFromData(ref abData);
+			} else {
+				if (id != 0 && id != 3)
+				Console.WriteLine("Packetid " + id + " not implemented");
+				oRet = new PackUnknown();
+				
+			}
 			return oRet;
 		}
 		
