@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace ScubyNet
 {
@@ -44,6 +45,17 @@ namespace ScubyNet
 			rbData[vlPos + 3] = (byte)( vlValue        & 0xFF);
 		}
 		
+		protected static void writeLongAt(ref byte[] rbData, int vlPos, long vlValue) {
+			rbData[vlPos    ] = (byte)((vlValue >> 56) & 0xFF);
+			rbData[vlPos + 1] = (byte)((vlValue >> 48) & 0xFF);
+			rbData[vlPos + 2] = (byte)((vlValue >> 40) & 0xFF);
+			rbData[vlPos + 3] = (byte)((vlValue >> 32) & 0xFF);
+			rbData[vlPos + 4] = (byte)((vlValue >> 24) & 0xFF);
+			rbData[vlPos + 5] = (byte)((vlValue >> 16) & 0xFF);
+			rbData[vlPos + 6] = (byte)((vlValue >>  8) & 0xFF);
+			rbData[vlPos + 7] = (byte)( vlValue        & 0xFF);
+		}
+		
 		protected static void writeBytesAt(ref byte[] rbData, int vlPos, byte[] vbValue) {
 			for (int i=0 ; i<vbValue.Length; i++) 
 				rbData[vlPos + i] = vbValue[i];
@@ -63,9 +75,22 @@ namespace ScubyNet
 		protected static int readIntFrom(ref byte[] rbData, int vlPos) {
 			int lRet = 0;
 			lRet += rbData[vlPos] << 24;
-			lRet += rbData[vlPos] << 16;
-			lRet += rbData[vlPos] << 8;
-			lRet += rbData[vlPos + 1];
+			lRet += rbData[vlPos + 1] << 16;
+			lRet += rbData[vlPos + 2] << 8;
+			lRet += rbData[vlPos + 3];
+			return lRet;
+		}
+		
+		protected static long readLongFrom(ref byte[] rbData, int vlPos) {
+			int lRet = 0;
+			lRet += rbData[vlPos] << 56;
+			lRet += rbData[vlPos + 1] << 48;
+			lRet += rbData[vlPos + 2] << 40;
+			lRet += rbData[vlPos + 3] << 32;
+			lRet += rbData[vlPos + 4] << 24;
+			lRet += rbData[vlPos + 5] << 16;
+			lRet += rbData[vlPos + 6] << 8;
+			lRet += rbData[vlPos + 7];
 			return lRet;
 		}
 		
@@ -78,11 +103,11 @@ namespace ScubyNet
 			int len = readIntFrom(ref abHead, 2);
 			
 			byte[] abData = new byte[len];
-			c.RetreiveBytes(ref abData);
+			len = c.RetreiveBytes(ref abData);
 			
-			
-			
-			return null;
+			Packet oRet = (Packet)Assembly.GetExecutingAssembly().CreateInstance(types[id].FullName);
+			oRet.createFromData(ref abData);
+			return oRet;
 		}
 		
 	}

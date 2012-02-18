@@ -14,7 +14,7 @@ namespace ScubyNet
 			//Application.Run ();
 			Console.WriteLine("test");
 			
-			Connection c = new Connection("test.scubywars.de", 1337);
+			Connection c = new Connection("gen", 1337);
 			
 			
 			

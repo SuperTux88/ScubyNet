@@ -7,7 +7,7 @@ namespace ScubyNet
 	public class PackHandshake : Packet
 	{
 		private string msPlayerName;
-		private int mlPlayerId;
+		private long mlPlayerId;
 				
 		public PackHandshake (string vsPlayerName)
 		{
@@ -15,11 +15,13 @@ namespace ScubyNet
 				throw new ArgumentException("no Name!");
 			msPlayerName = vsPlayerName;
 		}
-		internal PackHandshake() {}
+		public PackHandshake() {}
 		protected override Packet createFromData (ref byte[] rbData)
 		{
 			//throw new NotImplementedException ();
 			PackHandshake oRet = new PackHandshake();
+			int ack = readByteFrom(ref rbData, 0);
+			mlPlayerId = readLongFrom(ref rbData, 1);
 			return oRet;
 		}
 		
@@ -29,7 +31,7 @@ namespace ScubyNet
 		}
 		
 		public string PlayerName { get { return msPlayerName; } }
-		public int PlayerId { get { return mlPlayerId; } }
+		public long PlayerId { get { return mlPlayerId; } }
 		
 		protected override byte[] Build ()
 		{
@@ -45,7 +47,10 @@ namespace ScubyNet
 		public bool DoHandshake(Connection c) {
 			c.SendBytes(this.Build());
 			Packet p = Packet.Read(c);
-			return false;
+			if (p == null || !p.GetType().Equals(typeof(PackHandshake)))
+				return false;
+			this.mlPlayerId = ((PackHandshake)p).PlayerId;
+			return true;
 		}
 		
 	}

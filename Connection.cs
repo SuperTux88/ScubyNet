@@ -15,7 +15,7 @@ namespace ScubyNet
 		{
 			moSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 			
-			moSocket.Connect("gen", 1337);
+			moSocket.Connect(vsHost, vlPort);
 			
 			PackHandshake hs = new PackHandshake("dasbinich üöäpqß");
 			if (hs.DoHandshake(this)) {
