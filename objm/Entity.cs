@@ -20,20 +20,10 @@ namespace ScubyNet.obj
         
 		public double Direction { get { return mfDir; } set { mfDir = value; } }
 		public int Radius { get { return mlRadius; } set { mlRadius	= value; } }
-<<<<<<< HEAD
 		public abstract int Speed { get; set; }
-		
-		public double DistanceTo(Entity voEnt) {
-            return Math.Sqrt(
-                       Math.Pow((voEnt.PosX - this.PosX), 2) 
-                     + Math.Pow((voEnt.PosY - this.PosY), 2)
-                   );
-		}
-=======
-        public virtual int Speed { get { return 0; } set { } }
         public Point Position { get { return mPos; } }
 
->>>>>>> e4ec72eeb63d300e3c2e4d668a614ec16407e5d5
+
 	}
 }
 
