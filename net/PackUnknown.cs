@@ -4,8 +4,7 @@ namespace ScubyNet.net
 {
 	public class PackUnknown : Packet
 	{
-		internal int id;
-		
+				
 		public PackUnknown ()
 		{
 		}

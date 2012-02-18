@@ -54,17 +54,25 @@ namespace ScubyNet
 						byte[] buf = pa.Build();
 						conn.SendBytes(ref buf);
 					}		
-					
+				// Packet = 0
 				} else if (p is PackPlayer) {
 					PackPlayer oPP = p as PackPlayer;
 					Player oPlayer = moWorld.GetPlayer(oPP.PlayerId);
 					oPlayer.UpdateFromPacket(oPP);
+
+                // Packet = 1
 				} else if (p is PackShot) {
 					PackShot oPS = p as PackShot;
 					Shot oShot = moWorld.GetShot(oPS.PlayerId);
 					oShot.UpdateFromPacket(oPS);
 					oShot.Parent.moShot = oShot;
-				}
+
+                // Packet = 8
+                } else if (p is PackPlayerLeftMessage) {
+                    PackPlayerLeftMessage oPL = p as PackPlayerLeftMessage;
+                    moWorld.removePlayer(oPL.PublicID);
+                // Packet = 9
+                } //else
 				
 				
 				

@@ -36,7 +36,17 @@ namespace ScubyNet.obj
 			}
 			return oRet;
 		}
-		
+
+        public void removePlayer(long vlPublicID)
+        {
+            if (mcoPlayers.ContainsKey(vlPublicID))                 
+              mcoPlayers.Remove(vlPublicID);
+        }
+
+        public void setPlayerName(long vlPublicID, string vlPlayerName)
+        {
+            this.GetPlayer(vlPublicID).Name = vlPlayerName;
+        }
 		// Collisions
 		
 		// 

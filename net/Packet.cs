@@ -16,7 +16,7 @@ namespace ScubyNet.net
 			types.Add((int)PacketType.World, typeof(PackWorld));
 			types.Add((int)PacketType.Handshake, typeof(PackHandshake));
 			types.Add((int)PacketType.Action, typeof(PackAction));
-			//types.Add((int)PacketType.Handshake, typeof(PackHandshake));
+            types.Add((int)PacketType.PlayerLeft, typeof(PackPlayerLeftMessage));
 			//types.Add((int)PacketType.Handshake, typeof(PackHandshake));
 			//types.Add((int)PacketType.Handshake, typeof(PackHandshake));
 		}
@@ -30,10 +30,12 @@ namespace ScubyNet.net
 			Action = 5, 
 			Scoreboard, 
 			PlayerJoined, 
-			PlayerLeft
+			PlayerLeft,
+            PlayerName
 		}
 		
 		internal abstract byte[] Build();
+
 		protected abstract Packet createFromData(ref byte[] rbData);
 		
 		protected static void writeByteAt(ref byte[] rbData, int vlPos, byte vbValue) {

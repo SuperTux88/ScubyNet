@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -65,10 +65,12 @@
     <Compile Include="net\Packet.cs" />
     <Compile Include="net\PackHandshake.cs" />
     <Compile Include="net\PackPlayer.cs" />
+    <Compile Include="net\PackPlayerLeftMessage.cs" />
     <Compile Include="net\PackShot.cs" />
     <Compile Include="net\PackUnknown.cs" />
     <Compile Include="net\PackWorld.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="net\PackPlayerName.cs" />
     <Compile Include="objm\Point.cs" />
     <Compile Include="objm\World.cs" />
     <Compile Include="objm\Player.cs" />
