@@ -18,7 +18,7 @@ namespace ScubyNet.inp.fkt
 			Point b = ResolvePoint(vasParams[1]);
 			if (a == null) return "{ERR Could not get point from " + vasParams[0] + "}";
 			if (b == null) return "{ERR Could not get point from " + vasParams[1] + "}";
-			return a.getDistanceTo(b).ToString();
+			return a.getShortestDistanceTo(b).ToString();
 		}
 	}
 }
