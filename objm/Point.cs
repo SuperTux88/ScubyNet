@@ -16,8 +16,14 @@ namespace ScubyNet.obj
 
         public Point(double vdPosX, double vdPosY)
         {
-            mPosX      = vdPosX;
-            mPosY      = vdPosY;
+            mPosX = clacValidCoordinate(vdPosX);
+            mPosY = clacValidCoordinate(vdPosY);
+        }
+
+        public Point(double vdDirection)
+        {
+            mPosX = clacValidCoordinate(Math.Cos(vdDirection));
+            mPosY = clacValidCoordinate(Math.Sin(vdDirection));
         }
 		
 		public Point Add(Point voP) {
@@ -53,7 +59,12 @@ namespace ScubyNet.obj
                    );
         }
 
-        public double PosX { get { return mPosX; } set { mPosX = value; } }
-        public double PosY { get { return mPosY; } set { mPosY = value; } }
+        private double clacValidCoordinate(double dCoordinate)
+        {
+            return (dCoordinate + 1000.0) % 1000.0;
+        }
+
+        public double PosX { get { return mPosX; } set { mPosX = clacValidCoordinate(value); } }
+        public double PosY { get { return mPosY; } set { mPosY = clacValidCoordinate(value); } }
     }
 }

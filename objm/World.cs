@@ -26,6 +26,8 @@ namespace ScubyNet.obj
 			
 		private static World goWorld = null;
 		public static World TheWorld { get { return goWorld; } }
+
+        public static double RESET_BOUNDERY = 1000.0;
 		
 		public delegate void ShotEvent(Shot s);
 		public delegate void PlayerEvent(Player p);
