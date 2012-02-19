@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ScubyNet.inp;
+using ScubyNet.net;
 
 namespace ScubyNet.inp.cmd
 {
@@ -17,7 +18,7 @@ namespace ScubyNet.inp.cmd
 			}
 		}
 		
-		public override void Run (List<string> vlsParams) 
+		public override void Run (List<string> vlsParams, Connection voConn) 
 		{
 			
 		}

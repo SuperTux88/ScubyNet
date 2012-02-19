@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using ScubyNet.net;
 using ScubyNet.obj;
+using ScubyNet.inp;
 
 using System.Collections.Generic;
 
@@ -35,8 +36,11 @@ namespace ScubyNet
 			mc.moWorld = new World(sName);
 			
 			mc.moWorld.PlayerEntered += mc.PlayerEntered;
+			InpScript oScript = InpScript.TryParse("/home/uditaren/td/src/ScubyNet/testbot.inp");
 			
 			mc.c = new Connection(sName, sURL, lPort);
+			mc.moWorld.RegisterBot(oScript, mc.c);
+			
 			mc.mcConnections.Add(mc.c.ID, mc.c);
 			for (int i=0;i<	4; i++) {
 				Connection oC = new Connection(sName, sURL, lPort);
@@ -65,6 +69,8 @@ namespace ScubyNet
 				Console.WriteLine("Player " + p.Name + "(" + p.ID + ") fired a shot"); 
 			else
 				p.Shot.ShotCeased += ShotCease;
+			
+			Console.WriteLine(p.Shot.Speed);
 		}
 		
 		private void ShotCease(Shot s) {
@@ -83,12 +89,17 @@ namespace ScubyNet
 				if (p is PackWorld) {
 					moWorld.WorldTrip();
 									
+					foreach (Connection o in mcConnections.Values) {
+						lock (o) {
+							o.FireNextAction();
+						}
+					}
+					
 					// finally process world events and feed the dsl – njomnjom
 					//if (!initdone) { // alles dummy: hier müssen erst mal listen gesammelt und events generiert werden
 					//	ScubyNet.inp.InpCommand.RunCommand("move");
 					//	initdone = true;
 					//}
-					
 					
 				// Packet = 0
 				} else if (p is PackPlayer) {

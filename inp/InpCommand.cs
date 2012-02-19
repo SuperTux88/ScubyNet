@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using ScubyNet.net;
 
 namespace ScubyNet.inp
 {
@@ -28,7 +29,7 @@ namespace ScubyNet.inp
 			return mcCommands.ContainsKey(vsName);
 		}
 		
-		public static void RunCommand(string vsName) {
+		public static void RunCommand(string vsName, Connection voConn) {
 			string[] asParts = vsName.Split(' ');
 			string sCommand = asParts[0].Trim();
 			List<string> lsParams = new List<string>();
@@ -38,11 +39,11 @@ namespace ScubyNet.inp
 			if (!mcCommands.ContainsKey(sCommand))
 				Console.WriteLine("command " + sCommand + " not found");
 			else
-				mcCommands[vsName].Run(lsParams);
+				mcCommands[vsName].Run(lsParams, voConn);
 		}
 		
 		public abstract string Name { get; }
-		public abstract void Run(List<string> vlsParams);
+		public abstract void Run(List<string> vlsParams, Connection voConn);
 		
 	}
 }

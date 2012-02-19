@@ -19,6 +19,10 @@ namespace ScubyNet.obj
             mPosX      = vdPosX;
             mPosY      = vdPosY;
         }
+		
+		public Point Add(Point voP) {
+			
+		}
 
         public double getDistanceTo(Point voPoint) {
             return Math.Sqrt(

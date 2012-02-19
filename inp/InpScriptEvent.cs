@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using ScubyNet.obj;
+using ScubyNet.net;
 
 namespace ScubyNet.inp
 {
@@ -7,6 +9,7 @@ namespace ScubyNet.inp
 	{
 		private InpScript moParent;
 		private string msEventName;
+		private string msEventCondition = "";
 		private string[] msCommands;
 		
 		public InpScriptEvent(InpScript voParent, string vsEventName, List<string> vcsCommands)
@@ -15,6 +18,7 @@ namespace ScubyNet.inp
 			int lPos = vsEventName.IndexOf("=");
 			if (lPos > 0 ) {
 				msEventName = vsEventName.Substring(0, lPos).Trim();
+				msEventCondition = vsEventName.Substring(lPos+1).Trim();
 			} else {
 				msEventName = vsEventName;
 			}
@@ -38,9 +42,9 @@ namespace ScubyNet.inp
 				}
 				else {
 					if (count == 0)
-						ssub += c; 
+						sret += c; 
 					else 
-						sret += c;
+						ssub += c;
 				}
 			}
 			if (count != 0) {
@@ -48,27 +52,41 @@ namespace ScubyNet.inp
 				return " {ERR} ";
 			}
 			
-			string[] asParts = sret.Trim().Split(':');
-			string sfkt = asParts[0].Trim();
-			string[] asParams = null;
-			if (asParts.Length > 0) {
-				asParams = asParts[1].Replace(',',' ').Trim().Split(' ');
+			if (vbFkt) {
+				string[] asParts = sret.Trim().Split(':');
+				string sfkt = asParts[0].Trim();
+				string[] asParams = null;
+				if (asParts.Length > 0) {
+					asParams = asParts[1].Replace(',',' ').Trim().Split(' ');
+				}
+				sret += InpFunction.RunFunction(sfkt, asParams);
 			}
-			sret += InpFunction.RunFunction(sfkt, asParams);
 			
 			return sret + " ";
 		}
 		
 		
-		public void Trigger() {
+		public void Trigger(Connection voConn) {
 			foreach (string sLine in msCommands) { 
-				string sFullLine = Eval(sLine, false).Trim();
+				Console.WriteLine("processing: " + sLine);
+				string sFullLine = sLine.Replace("_", "{" + voConn.ID + "}" ); 
+				if (msEventCondition.Length == 0) 
+					sFullLine = sFullLine.Replace("*", "{" + voConn.ID + "}" );
+				sFullLine = Eval(sFullLine, false).Trim();
 				if (sFullLine.Contains("{ERR")) {
 					Console.WriteLine("error in line: " + sLine);
 					Console.WriteLine(" >> " + sFullLine);
 					continue;
 				}
 				
+				Console.WriteLine("process line: " + sFullLine);
+				if (sFullLine.StartsWith("?")) {
+					
+				} else if (InpCommand.HasCommand(sFullLine.Split(' ')[0].Trim())) {
+					InpCommand.RunCommand(sFullLine, voConn);
+				} else { 
+					
+				}
 				
 				
 			}

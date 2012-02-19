@@ -6,6 +6,9 @@ namespace ScubyNet.inp.events
 {
 	public class EventRespawn : InpEvent
 	{
+		
+		public override event HandleEvent FireEvent;
+		
 		public EventRespawn ()
 		{
 		}

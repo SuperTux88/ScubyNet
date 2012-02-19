@@ -21,6 +21,12 @@ namespace ScubyNet.net
 			mbFire = vbFire;
 		}
 		
+		public bool Left { get { return mbLeft; } set { mbLeft = value; } }
+		public bool Right { get { return mbRight; } set { mbRight = value; } }
+		public bool Thrust { get { return mbThrust; } set  { mbThrust = value; } }
+		public bool Fire { get { return mbFire; } set { mbFire = value; } }
+		
+		
 		protected override Packet createFromData (ref byte[] rbData)
 		{
 			return null;

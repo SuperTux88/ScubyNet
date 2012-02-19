@@ -1,10 +1,29 @@
 using System;
 using System.Collections.Generic;
 
+using ScubyNet.net;
+using ScubyNet.inp;
+
 namespace ScubyNet.obj
 {
 	public class World
 	{
+		public class InpScriptEventRunner {
+			private InpScriptEvent moEvent;
+			private Connection moConn; 
+			public InpScriptEventRunner(InpScriptEvent voSEvent, Connection voConn) {
+				moEvent = voSEvent;
+				moConn = voConn;
+			}
+			
+			public bool ConsumeEvent() {
+				Console.WriteLine("Triggering " + moEvent.Name);
+				moEvent.Trigger(moConn);
+				return true;
+			}
+		}
+			
+			
 		private static World goWorld = null;
 		public static World TheWorld { get { return goWorld; } }
 		
@@ -17,13 +36,27 @@ namespace ScubyNet.obj
 		
 		private Dictionary<long, Player> mcoPlayers = new Dictionary<long, Player>();
 		private Dictionary<long, Shot> mcoShots = new Dictionary<long, Shot>();
+		private List<InpScriptEventRunner> mcoRunners = new List<InpScriptEventRunner>();
 		internal string msOwner;
 		
 		public World (string vsPlayername) {
 			goWorld = this;
 			msOwner = vsPlayername; 
-			// todo: infect world with InpEvents
-			ScubyNet.inp.InpEvent.ConsumeWorld(this);
+			InpEvent.ConsumeWorld(this);
+		}
+		
+		public void RegisterBot(InpScript voScript, Connection voConn) {
+			foreach (InpScriptEvent oSE in voScript.Events.Values) {
+				InpEvent e = InpEvent.GetEvent(oSE.Name);
+				if (e != null) {
+					InpScriptEventRunner oRunner = new InpScriptEventRunner(oSE, voConn);
+					e.FireEvent += oRunner.ConsumeEvent;
+					mcoRunners.Add(oRunner);
+					Console.WriteLine("Event " + oSE.Name + " registered");
+				} else {
+					Console.WriteLine("Event " + oSE.Name + " not found");
+				}
+			}
 		}
 		
 		public Player GetPlayer(long id) {

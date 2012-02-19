@@ -23,6 +23,7 @@ namespace ScubyNet.obj
             this.Direction = voPacket.Direction;
 			this.Radius = voPacket.Radius;
 			this.Speed = voPacket.Speed;
+			if (Entity.vShootspeed < 1.0) vShootspeed = this.Speed;
 			this.ParentId = voPacket.ParentId; //<< sinnfrei, bleibt immer gleich
 			this.Lifetime = voPacket.Lifetime;
 		}

@@ -29,6 +29,15 @@ namespace ScubyNet.inp
 			}
 		}
 		
+		public static InpEvent GetEvent(string vsName) {
+			if (gcoEvents.ContainsKey(vsName))
+				return gcoEvents[vsName];
+			return null;
+		}
+		
+		public delegate bool HandleEvent();
+		public abstract event HandleEvent FireEvent;
+		
 		public abstract string Name { get; }
 		public abstract void Consume(World w);
 		

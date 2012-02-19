@@ -13,6 +13,8 @@ namespace ScubyNet.inp
 		{
 		}
 		
+		public Dictionary<string, InpScriptEvent> Events { get { return mcoEvents; } }
+		
 		public static InpScript TryParse(string vsFilename) {
 			InpScript oRet = new InpScript();
 			
@@ -55,7 +57,7 @@ namespace ScubyNet.inp
 			
 			Console.WriteLine("Checking...");
 			foreach (InpScriptEvent oEvent in oRet.mcoEvents.Values) {
-				
+				Console.WriteLine ("got event: " + oEvent.Name);
 			}
 			
 			return oRet;

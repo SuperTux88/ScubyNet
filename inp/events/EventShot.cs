@@ -5,6 +5,8 @@ namespace ScubyNet.inp.events
 {
 	public class EventShot : InpEvent
 	{
+		public override event HandleEvent FireEvent;
+		
 		public EventShot ()	{}		
 		
 		public override string Name  { get { return "SHOT"; } }
@@ -25,6 +27,8 @@ namespace ScubyNet.inp.events
 		private void ShotFired(Player voPlayer) {
 			//System.Media.SystemSounds.Beep.Play();
 			// trigger – hier kann dass script getriggert werden.
+			if (FireEvent != null)
+				FireEvent();
 		}
 	}
 }

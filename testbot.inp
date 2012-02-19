@@ -1,0 +1,13 @@
+Ein Testbot-Script um grundlegende Funktionenu testen:
+
+
+
+itsnotpython
+
+
+!ENTER
+	? _ = *
+	move
+	.
+
+

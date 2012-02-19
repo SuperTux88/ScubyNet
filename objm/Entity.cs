@@ -4,6 +4,8 @@ namespace ScubyNet.obj
 {
 	public abstract class Entity
 	{
+		public static double vShootspeed = 0.1;
+		
 		internal World moParent;
 		private long mlID = -1;
         private Point mPos = new Point(0.0, 0.0);
@@ -23,7 +25,18 @@ namespace ScubyNet.obj
 
             return retPoint;
         }
-
+		
+		
+		public Point GitHitpoint(Entity voTarget) {
+			double dist = this.Position.getShortestDistanceTo(voTarget.Position);
+			double time = dist / vShootspeed;
+			
+			Position 
+			
+			return null;
+		}
+		
+		
 		public long ID { get { return mlID; } }
         
 		public int Speed { get { return mlSpeed; } set { mlSpeed = value; } }

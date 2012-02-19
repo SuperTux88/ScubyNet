@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using ScubyNet.obj;
 
-namespace ScubyNet
+namespace ScubyNet.inp
 {
 	public abstract class InpFunction
 	{
