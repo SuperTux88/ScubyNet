@@ -62,7 +62,12 @@ namespace ScubyNet.inp
 		
 		public void Trigger() {
 			foreach (string sLine in msCommands) { 
-				string[] sParts = sLine.Split(' ');
+				string sFullLine = Eval(sLine).Trim();
+				if (sFullLine.Contains("{ERR}")) {
+					Console.WriteLine("error in line: " + sLine);
+					Console.WriteLine(" >> " + sFullLine);
+					continue;
+				}
 				
 				
 				

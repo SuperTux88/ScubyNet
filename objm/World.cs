@@ -16,7 +16,7 @@ namespace ScubyNet.obj
 		private Dictionary<long, Shot> mcoShots = new Dictionary<long, Shot>();
 		internal string msOwner;
 		
-		public World (string vsPlayername ) {
+		public World (string vsPlayername) {
 			msOwner = vsPlayername; 
 			// todo: infect world with InpEvents
 			ScubyNet.inp.InpEvent.ConsumeWorld(this);
