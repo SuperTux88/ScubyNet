@@ -12,8 +12,8 @@ namespace ScubyNet.obj
         
         public Point()
         {
-        }
-		
+        }	
+
         public Point(double vdPosX, double vdPosY)
         {
             mPosX      = vdPosX;

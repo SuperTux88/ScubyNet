@@ -19,7 +19,7 @@ namespace ScubyNet.obj
 
         public Point getPositionNextFrame ()
         {
-            Point retPoint = new Point(0.0,0.0,0.0);
+            Point retPoint = new Point(0.0,0.0);
 
             return retPoint;
         }
