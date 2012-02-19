@@ -59,8 +59,6 @@ namespace ScubyNet.obj
 				}
 			} 
 		}
-		
-		
         public int Score { get { return mScore; } set { mScore = value; } }
 		public double RotationSpeed { get { return mfRotSpd; } set { mfRotSpd = value; } }
 		public bool Left { 

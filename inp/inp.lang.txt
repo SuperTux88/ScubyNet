@@ -45,9 +45,14 @@ itsnotpython
 	then rotate right
 
 !beforecollision = ALL COLLISION BY DISTANCE, ANGLE:
-	? < 20 : stop
+	? [dist _, * ] < 20
+		// then
+		stop
+	?
+		// else
+	¿
+	// ^ end
 	
 !reachable = OTHER PLAYER BY DISTANCE:
-	? < [REACH]: target * -> fire
-	
-	hunt *.HIT -> fire
+	? < [REACH]: target * -> fire	
+	hunt [hit _, * ] -> fire

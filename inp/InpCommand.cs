@@ -24,7 +24,6 @@ namespace ScubyNet.inp
 			
 		public InpCommand () {}
 		
-		
 		public static bool HasCommand(string vsName) {
 			return mcCommands.ContainsKey(vsName);
 		}

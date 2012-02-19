@@ -87,6 +87,8 @@
     <Compile Include="inp\InpEvent.cs" />
     <Compile Include="inp\events\EventShot.cs" />
     <Compile Include="inp\events\EventRespawn.cs" />
+    <Compile Include="inp\InpFunction.cs" />
+    <Compile Include="inp\fkt\FktHit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
@@ -96,5 +98,6 @@
   <ItemGroup />
   <ItemGroup>
     <Folder Include="inp\events\" />
+    <Folder Include="inp\fkt\" />
   </ItemGroup>
 </Project>

@@ -23,12 +23,49 @@ namespace ScubyNet.inp
 		
 		public string Name { get { return msEventName; } } 
 		
+		
+		private string Eval(string sLine, bool vbFkt) { 
+			int count = 0;
+			string ssub = "";
+			string sret = " ";
+			foreach (char c in sLine.Trim()) {
+				if (c == '[') 
+					count++;
+				else if (c == ']') {
+					count--;
+					if (count == 0)
+						sret += Eval(ssub, true);
+				}
+				else {
+					if (count == 0)
+						ssub += c; 
+					else 
+						sret += c;
+				}
+			}
+			if (count != 0) {
+				Console.WriteLine ( "cannot parse expression" );
+				return " {ERR} ";
+			}
+			
+			string[] asParts = sret.Trim().Split(':');
+			string sfkt = asParts[0].Trim();
+			string[] asParams = null;
+			if (asParts.Length > 0) {
+				asParams = asParts[1].Replace(',',' ').Trim().Split(' ');
+			}
+			sret += InpFunction.RunFunction(sfkt, asParams);
+			
+			return sret + " ";
+		}
+		
+		
 		public void Trigger() {
 			foreach (string sLine in msCommands) { 
 				string[] sParts = sLine.Split(' ');
-				if (InpCommand.HasCommand(sParts[0])) {
-					InpCommand.RunCommand(sLine);
-				}
+				
+				
+				
 			}
 		}
 	}
