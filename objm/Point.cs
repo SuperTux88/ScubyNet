@@ -35,7 +35,17 @@ namespace ScubyNet.obj
                    );
         }
 
-        public double PosX { get { return mPosX; } set { mPosX = value; } }
-        public double PosY { get { return mPosY; } set { mPosY = value; } }
+        private double clacValidCoordinate(double dCoordinate)
+        {
+            if (dCoordinate > 1000.0)
+                return (dCoordinate - 1000.0);
+            else if (dCoordinate < 1000.0)
+                return (1000.0 + dCoordinate);
+            else
+                return dCoordinate;
+        }
+
+        public double PosX { get { return mPosX; } set { mPosX = clacValidCoordinate(value); } }
+        public double PosY { get { return mPosY; } set { mPosY = clacValidCoordinate(value); } }
     }
 }
