@@ -5,6 +5,9 @@ namespace ScubyNet.obj
 {
 	public class World
 	{
+		private static World goWorld = null;
+		public static World TheWorld { get { return goWorld; } }
+		
 		public delegate void ShotEvent(Shot s);
 		public delegate void PlayerEvent(Player p);
 		
@@ -17,6 +20,7 @@ namespace ScubyNet.obj
 		internal string msOwner;
 		
 		public World (string vsPlayername) {
+			goWorld = this;
 			msOwner = vsPlayername; 
 			// todo: infect world with InpEvents
 			ScubyNet.inp.InpEvent.ConsumeWorld(this);
@@ -46,7 +50,13 @@ namespace ScubyNet.obj
 			}
 			return oRet;
 		}
-
+		
+		public Entity GetEntity(long id) {
+			if (mcoPlayers.ContainsKey(id)) return mcoPlayers[id];
+			if (mcoShots.ContainsKey(id)) return mcoShots[id];
+			return null;
+		}
+		
         public void removePlayer(long vlPublicID)
         {
             if (mcoPlayers.ContainsKey(vlPublicID)) {

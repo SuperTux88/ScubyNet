@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using ScubyNet.obj;
 
 namespace ScubyNet
 {
@@ -20,6 +21,29 @@ namespace ScubyNet
 					}
 				}	
 			}
+		}
+		
+		protected Point ResolvePoint(string vsParam) {
+			string p = vsParam.Trim();
+			if (p.StartsWith("{") && p.EndsWith("}")) {
+				long id;
+				if (!long.TryParse(p.Substring(1, p.Length - 2), out id)) 
+					return null;
+				return World.TheWorld.GetEntity(id).Position;
+			} else if (p.StartsWith("(") && p.EndsWith(")") && p.IndexOf('|') > 0) {
+				int pos = p.IndexOf('|');
+				string px = p.Substring(1, pos-1).Trim();
+				string py = p.Substring(pos +1, p.Length - pos - 1).Trim();
+				Point ret = new Point();
+				double dx;
+				double dy;
+				if (!double.TryParse(px, out dx)) return null;
+				if (!double.TryParse(py, out dy)) return null;
+				ret.PosX = dx;
+				ret.PosY = dy;
+				return ret;
+			} else 
+				return null;
 		}
 		
 		public static string RunFunction(string vsName, string[] vasParams) {
