@@ -5,6 +5,7 @@ namespace ScubyNet.obj
 	public class Player : Entity
 	{
 		private string msName = "unknown";
+        private int mScore = 0;
 		private double mfRotSpd = 0.0;
 		private bool mbLeft = false;
 		private bool mbRight = false;
@@ -27,6 +28,8 @@ namespace ScubyNet.obj
 			this.Position.PosY      = voPack.PosY;
 			this.Position.Direction = voPack.Direction;
 
+            this.Score = voPack.Score;
+
 			this.Radius = voPack.Radius;
 			this.RotationSpeed = voPack.RotationSpeed;
 			this.Left = voPack.Left;
@@ -37,6 +40,7 @@ namespace ScubyNet.obj
 		
 		public override int Speed { get { return 100; } set { } }
 		public string Name { get { return msName; } set { msName = value; } }
+        public int Score { get { return mScore; } set { mScore = value; } }
 		public double RotationSpeed { get { return mfRotSpd; } set { mfRotSpd = value; } }
 		public bool Left { get { return mbLeft; } set { mbLeft = value; } }
 		public bool Right { get { return mbRight; } set { mbRight = value; } }

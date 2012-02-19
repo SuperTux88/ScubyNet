@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace ScubyNet.net
 {
-    public class PackPlayerName : Packet
+    public class PackPlayerJoinedMessage : Packet
     {
         private long mlPublicId;
         private string msPlayerName;
-        
-        public PackPlayerName() { }
+
+        public PackPlayerJoinedMessage() { }
 
         protected override Packet createFromData(ref byte[] rbData)
         {

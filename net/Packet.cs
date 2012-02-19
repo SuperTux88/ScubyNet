@@ -16,9 +16,11 @@ namespace ScubyNet.net
 			types.Add((int)PacketType.World, typeof(PackWorld));
 			types.Add((int)PacketType.Handshake, typeof(PackHandshake));
 			types.Add((int)PacketType.Action, typeof(PackAction));
+            types.Add((int)PacketType.Scoreboard, typeof(PackScoreboard));
+            types.Add((int)PacketType.PlayerJoined, typeof(PackPlayerJoinedMessage));
             types.Add((int)PacketType.PlayerLeft, typeof(PackPlayerLeftMessage));
-			//types.Add((int)PacketType.Handshake, typeof(PackHandshake));
-			//types.Add((int)PacketType.Handshake, typeof(PackHandshake));
+            types.Add((int)PacketType.PlayerName, typeof(PackPlayerName));
+			
 		}
 		
 		public enum PacketType { 

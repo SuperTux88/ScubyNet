@@ -65,7 +65,9 @@
     <Compile Include="net\Packet.cs" />
     <Compile Include="net\PackHandshake.cs" />
     <Compile Include="net\PackPlayer.cs" />
+    <Compile Include="net\PackPlayerJoinedMessage.cs" />
     <Compile Include="net\PackPlayerLeftMessage.cs" />
+    <Compile Include="net\PackScoreboard.cs" />
     <Compile Include="net\PackShot.cs" />
     <Compile Include="net\PackUnknown.cs" />
     <Compile Include="net\PackWorld.cs" />
@@ -88,7 +90,5 @@
   <ItemGroup>
     <None Include="inp\inp.lang.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="inp\cmd\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
