@@ -4,6 +4,9 @@ namespace ScubyNet.obj
 {
 	public class Player : Entity
 	{
+		public delegate void PlayerEvent(Player p);
+		public event PlayerEvent PlayerLeft;
+		
 		private string msName = "unknown";
         private int mScore = 0;
 		private double mfRotSpd = 0.0;
@@ -15,14 +18,8 @@ namespace ScubyNet.obj
 		
 		public Player (World voParent, long id) : base(voParent, id)
 		{
-			voParent.NewShot += HandleNewShot;
 		}
-		
-		private void HandleNewShot(long id) {
-			//Console.WriteLine("new shot(" + id + "for player " + this.ID);
-			//boom
-		}
-		
+				
 		public void UpdateFromPacket(ScubyNet.net.PackPlayer voPack) {
 			this.Position.PosX      = voPack.PosX;
 			this.Position.PosY      = voPack.PosY;
@@ -36,6 +33,10 @@ namespace ScubyNet.obj
 			this.Right = voPack.Right;
 			this.Thrust = voPack.Thrust;
 			this.Fire = voPack.Fire;
+		}
+	
+		public void FireLeave() {
+			PlayerLeft(this);
 		}
 		
 		public override int Speed { get { return 100; } set { } }

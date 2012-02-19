@@ -5,9 +5,12 @@ namespace ScubyNet.obj
 {
 	public class World
 	{
-		public delegate void NewShotHandler(long id);
+		public delegate void ShotEvent(Shot s);
+		public delegate void PlayerEvent(Player p);
 		
-		public event NewShotHandler NewShot;
+		public event ShotEvent ShotFired;
+		public event PlayerEvent PlayerEntered;
+		
 		
 		private Dictionary<long, Player> mcoPlayers = new Dictionary<long, Player>();
 		private Dictionary<long, Shot> mcoShots = new Dictionary<long, Shot>();
@@ -21,6 +24,7 @@ namespace ScubyNet.obj
 			} else { 
 				oRet = new Player(this, id);
 				mcoPlayers.Add(id, oRet);
+				PlayerEntered(oRet);
 			}
 			return oRet;
 		}
@@ -32,30 +36,24 @@ namespace ScubyNet.obj
 			} else { 
 				oRet = new Shot(this, id);
 				mcoShots.Add(id, oRet);
-				NewShot(id);
+				if (ShotFired != null)
+					ShotFired(oRet);
 			}
 			return oRet;
 		}
 
         public void removePlayer(long vlPublicID)
         {
-            if (mcoPlayers.ContainsKey(vlPublicID))                 
-              mcoPlayers.Remove(vlPublicID);
+            if (mcoPlayers.ContainsKey(vlPublicID)) {
+				mcoPlayers[vlPublicID].FireLeave();
+            	mcoPlayers.Remove(vlPublicID);
+			}
         }
 
         public void setPlayerName(long vlPublicID, string vlPlayerName)
         {
             this.GetPlayer(vlPublicID).Name = vlPlayerName;
         }
-		// Collisions
-		
-		// 
-		
-		// all players als List<Player>
-		
-		// all shots als List<Shot>
-		
-		// all * by Condition
 		
 		internal void WorldTrip() {
 			List<long> ids = new List<long>();

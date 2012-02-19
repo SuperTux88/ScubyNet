@@ -14,7 +14,14 @@ namespace ScubyNet
 		private Connection c;
 		private Dictionary<long, Connection> mcConnections = new Dictionary<long, Connection>();
 		private World moWorld = new World();
-		
+		public class DummyReader {
+			private Connection moConn;
+			public DummyReader(Connection voConn) { moConn = voConn; }
+			public void Read() {
+				while (Packet.Read(moConn) != null);
+				Console.WriteLine("ouch: null packet");
+			}
+		}
 		
 		public static void Main (string[] args)
 		{
@@ -24,6 +31,7 @@ namespace ScubyNet
 			int lPort = 1337;
 			
 			MainClass mc = new MainClass();
+			mc.moWorld.PlayerEntered += mc.PlayerEntered;
 			
 			mc.c = new Connection(sName, sURL, lPort);
 			mc.mcConnections.Add(mc.c.ID, mc.c);
@@ -38,15 +46,14 @@ namespace ScubyNet
 			
 		}
 		
-		public class DummyReader {
-			private Connection moConn;
-			public DummyReader(Connection voConn) { moConn = voConn; }
-			public void Read() {
-				while (Packet.Read(moConn) != null);
-				Console.WriteLine("ouch: null packet");
-			}
+		private void PlayerEntered(Player p) { 
+			Console.WriteLine("Player " + p.Name + "(" + p.ID + ") entered the game"); 
+			p.PlayerLeft += PlayerLeft; 
 		}
-			
+		private void PlayerLeft(Player p) { 
+			Console.WriteLine("Player " + p.Name + "(" + p.ID + ") left the game"); 
+		}	
+		
 		public void ProcessPackages() {
 			Packet p;
 			bool initdone=false;
