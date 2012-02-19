@@ -8,7 +8,11 @@ namespace ScubyNet.net
 		private bool mbRight;
 		private bool mbThrust;
 		private bool mbFire;
-		
+
+        public PackAction()
+        {
+        }
+
 		public PackAction (bool vbLeft, bool vbRight, bool vbThrust, bool vbFire)
 		{
 			mbLeft = vbLeft;
