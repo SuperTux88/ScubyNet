@@ -30,7 +30,7 @@ namespace ScubyNet.inp
 					if (started) {
 						if (line.StartsWith("!")) {
 							if (sEvent.Length != 0) {
-								InpEvent oEvent = new InpEvent(sEvent, csBuf);
+								InpEvent oEvent = new InpEvent(oRet, sEvent, csBuf);
 								oRet.mcoEvents.Add(sEvent, oEvent);
 								csBuf.Clear();
 							}
@@ -49,7 +49,7 @@ namespace ScubyNet.inp
 				}
 			}
 			if (sEvent.Length > 0) {
-				InpEvent oEvent = new InpEvent(sEvent, csBuf);
+				InpEvent oEvent = new InpEvent(oRet, sEvent, csBuf);
 				oRet.mcoEvents.Add(sEvent, oEvent);
 			}
 			

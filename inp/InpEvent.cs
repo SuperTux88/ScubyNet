@@ -5,11 +5,13 @@ namespace ScubyNet.inp
 {
 	public class InpEvent
 	{
+		private InpScript moParent;
 		private string msEventName;
 		private string[] msCommands;
 		
-		public InpEvent(string vsEventName, List<string> vcsCommands)
+		public InpEvent(InpScript voParent, string vsEventName, List<string> vcsCommands)
 		{
+			moParent = voParent;
 			int lPos = vsEventName.IndexOf("=");
 			if (lPos > 0 ) {
 				msEventName = vsEventName.Substring(0, lPos).Trim();
@@ -22,7 +24,12 @@ namespace ScubyNet.inp
 		public string Name { get { return msEventName; } } 
 		
 		public void Trigger() {
-			
+			foreach (string sLine in msCommands) { 
+				string[] sParts = sLine.Split(' ');
+				if (InpCommand.HasCommand(sParts[0])) {
+					InpCommand.RunCommand(sLine);
+				}
+			}
 		}
 	}
 }

@@ -1,19 +1,27 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="obj/World.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="net/Packet.cs">
     <Files>
-      <File FileName="net/Connection.cs" Line="8" Column="23" />
-      <File FileName="net/Packet.cs" Line="101" Column="16" />
-      <File FileName="net/PackHandshake.cs" Line="5" Column="23" />
-      <File FileName="net/PackPlayer.cs" Line="35" Column="21" />
-      <File FileName="net/PackShot.cs" Line="36" Column="26" />
-      <File FileName="net/PackUnknown.cs" Line="24" Column="1" />
-      <File FileName="net/PackWorld.cs" Line="3" Column="23" />
-      <File FileName="Main.cs" Line="37" Column="33" />
-      <File FileName="obj/World.cs" Line="28" Column="12" />
-      <File FileName="obj/Player.cs" Line="14" Column="3" />
-      <File FileName="obj/Shot.cs" Line="25" Column="26" />
-      <File FileName="obj/Entity.cs" Line="17" Column="16" />
+      <File FileName="net/Connection.cs" Line="40" Column="1" />
+      <File FileName="net/Packet.cs" Line="95" Column="1" />
+      <File FileName="net/PackHandshake.cs" Line="19" Column="63" />
+      <File FileName="net/PackPlayer.cs" Line="33" Column="1" />
+      <File FileName="net/PackShot.cs" Line="40" Column="11" />
+      <File FileName="net/PackUnknown.cs" Line="19" Column="29" />
+      <File FileName="net/PackWorld.cs" Line="19" Column="17" />
+      <File FileName="Main.cs" Line="30" Column="21" />
+      <File FileName="objm/World.cs" Line="44" Column="10" />
+      <File FileName="objm/Player.cs" Line="13" Column="31" />
+      <File FileName="inp/InpScript.cs" Line="52" Column="40" />
+      <File FileName="inp/inp.lang.txt" Line="39" Column="1" />
+      <File FileName="inp/InpEvent.cs" Line="29" Column="44" />
+      <File FileName="objm/Entity.cs" Line="24" Column="52" />
+      <File FileName="objm/Shot.cs" Line="33" Column="34" />
+      <File FileName="objm/Point.cs" Line="30" Column="10" />
+      <File FileName="net/PackAction.cs" Line="32" Column="52" />
+      <File FileName="inp/cmd/CmdMove.cs" Line="19" Column="52" />
+      <File FileName="inp/InpCommand.cs" Line="23" Column="4" />
+      <File FileName="inp/cmd/CmdStop.cs" Line="21" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -18,21 +18,19 @@ namespace ScubyNet
 		
 		public static void Main (string[] args)
 		{
-			string sName = "kannix";
-			string sURL = "gen";
+			string sName = "Borg";
+			string sURL = "10.1.1.19";
 			//string sURL = "test.scubywars.de";
 			int lPort = 1337;
 			
 			MainClass mc = new MainClass();
 			
 			mc.c = new Connection(sName, sURL, lPort);
-			byte[] buf = new PackAction(true,false,true,true).Build();
-			mc.c.SendBytes(ref buf);
-			
 			mc.mcConnections.Add(mc.c.ID, mc.c);
-			for (int i=0;i<6; i++) {
+			for (int i=0;i<	40; i++) {
 				Connection oC = new Connection(sName, sURL, lPort);
-				mc.mcConnections.Add(oC.ID, oC);		
+				mc.mcConnections.Add(oC.ID, oC);
+				new Thread(new ThreadStart(new DummyReader(oC).Read)).Start();
 			}
 			
 			
@@ -40,8 +38,18 @@ namespace ScubyNet
 			
 		}
 		
+		public class DummyReader {
+			private Connection moConn;
+			public DummyReader(Connection voConn) { moConn = voConn; }
+			public void Read() {
+				Packet p; while ((p = Packet.Read(moConn)) != null);
+				Console.WriteLine("ouch: null packet");
+			}
+		}
+			
 		public void ProcessPackages() {
 			Packet p;
+			bool initdone=false;
 			while ((p = Packet.Read(c)) != null) {
 				
 				if (p is PackWorld) {
@@ -75,7 +83,11 @@ namespace ScubyNet
                 } //else
 				
 				
-				
+				// finally process world events and feed the dsl – njomnjom
+				if (!initdone) { // alles dummy: hier müssen erst mal listen gesammelt und events generiert werden
+					ScubyNet.inp.InpCommand.RunCommand("move");
+					initdone = true;
+				}
 			}
 			Console.WriteLine("got null package. exiting");
 		}

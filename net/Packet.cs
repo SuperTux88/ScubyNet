@@ -128,6 +128,10 @@ namespace ScubyNet.net
 			
 			int id = readShortFrom(ref abHead, 0);
 			len = readIntFrom(ref abHead, 2);
+			if (len < 0) { 
+				Console.WriteLine("Something went wrong: got negative Packet length");
+				return null;
+			}
 			
 			byte[] abData = new byte[len];
 			len = c.RetreiveBytes(ref abData);

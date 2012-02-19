@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ScubyNet.inp;
 
 namespace ScubyNet.inp.cmd
@@ -15,9 +16,9 @@ namespace ScubyNet.inp.cmd
 			}
 		}
 		
-		public override void Run ()
+		public override void Run (List<string> vlsParams )
 		{
-			throw new NotImplementedException ();
+			
 		}
 	}
 }
