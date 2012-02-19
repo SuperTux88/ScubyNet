@@ -13,9 +13,19 @@ namespace ScubyNet.net
         protected override Packet createFromData(ref byte[] rbData)
         {
             int iPos = 0;
+            int iScore = 0;
+            long lID = 0;
+
             while (iPos + 12 < rbData.Length)
             {
-                mcoScoreBoard.Add(readLongFrom(ref rbData, iPos), readIntFrom(ref rbData, iPos + 8));
+                lID = readLongFrom(ref rbData, iPos);
+                iScore = readIntFrom(ref rbData, iPos + 8);
+
+                if (mcoScoreBoard.ContainsKey(lID))
+                    mcoScoreBoard[lID] = iScore;
+                else
+                    mcoScoreBoard.Add(lID, iPos);
+
                 iPos += 12;
             }
             return this;
