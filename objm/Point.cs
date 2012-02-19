@@ -8,18 +8,16 @@ namespace ScubyNet.obj
     public class Point
     {
         private double mPosX;
-        private double mPosY;
-        private double mDirection;
+        private double mPosY;        
 
         public Point()
         {
         }
 
-        public Point(double vdPosX, double vdPosY, double vdDirection)
+        public Point(double vdPosX, double vdPosY)
         {
             mPosX      = vdPosX;
             mPosY      = vdPosY;
-            mDirection = vdDirection;
         }
 
         public double getDistanceTo(Point voPoint){
@@ -39,6 +37,5 @@ namespace ScubyNet.obj
 
         public double PosX { get { return mPosX; } set { mPosX = value; } }
         public double PosY { get { return mPosY; } set { mPosY = value; } }
-        public double Direction { get { return mDirection; } set { mPosX = mDirection; } }
     }
 }

@@ -6,7 +6,7 @@ namespace ScubyNet.obj
 	{
 		internal World moParent;
 		private long mlID = -1;
-        private Point mPos = new Point(0.0, 0.0, 0.0);
+        private Point mPos = new Point(0.0, 0.0);
 		private double mfDir = 0.0;
 		private int mlRadius = 0;
 		private int mlSpeed = 0;
@@ -19,7 +19,7 @@ namespace ScubyNet.obj
 
         public Point getPositionNextFrame ()
         {
-            Point retPoint = new Point(0.0,0.0,0.0);
+            Point retPoint = new Point(0.0,0.0);
 
             return retPoint;
         }
