@@ -3,6 +3,24 @@ hier comments und so
 fängt alles erst an wenn folgendes gefunden wird:
 
 
+DATENTYPEN!!!!!!!!!!
+
+*	Adressiertes Target
+_	Eigene Position (underscore)
+
+
+{ID}            Id einer entity. Nach bedarf wird in fkt deren position oder direction verwendet
+(2.312|23.11)   Positionsangabe
+123.234         Num
+
+
+Funktionen:
+[dist:_, *]    liefert die distaz zwischen uns und dem ziel   >> * > {ID}
+[hit:_, *]     berechnet schnittpunkt (wenn es einen gibt)
+
+
+
+
 !IDLE:
 
 
@@ -41,18 +59,22 @@ itsnotpython
 
 
 !IDLE:
-	goto middle
+	goto [hit:_, [fkt: *,*,*]]
 	then rotate right
 
 !beforecollision = ALL COLLISION BY DISTANCE, ANGLE:
 	? [dist _, * ] < 20
 		// then
 		stop
+	? 12 > 23
+		// else if
 	?
-		// else
-	¿
+	   // else
+	.
 	// ^ end
 	
-!reachable = OTHER PLAYER BY DISTANCE:
-	? < [REACH]: target * -> fire	
-	hunt [hit _, * ] -> fire
+!reachable = OTHER PLAYER BY MIN DISTANCE:
+	? [dist: _, *] < [REACH:_]
+	  target * 
+	  fire
+	.
