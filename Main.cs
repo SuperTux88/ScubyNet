@@ -18,7 +18,9 @@ namespace ScubyNet
 			private Connection moConn;
 			public DummyReader(Connection voConn) { moConn = voConn; }
 			public void Read() {
-				while (Packet.Read(moConn) != null);
+				//while (Packet.Read(moConn) != null);
+				byte[] dummy = new byte[1024];
+				while (moConn.RetreiveBytes(ref dummy) >= 0);
 				Console.WriteLine("ouch: null packet");
 			}
 		}
