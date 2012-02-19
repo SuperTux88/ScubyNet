@@ -16,8 +16,14 @@ namespace ScubyNet.obj
 
         public Point(double vdPosX, double vdPosY)
         {
-            mPosX      = vdPosX;
-            mPosY      = vdPosY;
+            mPosX = clacValidCoordinate(vdPosX);
+            mPosY = clacValidCoordinate(vdPosY);
+        }
+
+        public Point(double vdDirection)
+        {
+            mPosX = clacValidCoordinate(Math.Cos(vdDirection));
+            mPosY = clacValidCoordinate(Math.Sin(vdDirection));
         }
 
         public double getDistanceTo(Point voPoint) {
@@ -51,12 +57,7 @@ namespace ScubyNet.obj
 
         private double clacValidCoordinate(double dCoordinate)
         {
-            if (dCoordinate > 1000.0)
-                return (dCoordinate - 1000.0);
-            else if (dCoordinate < 1000.0)
-                return (1000.0 + dCoordinate);
-            else
-                return dCoordinate;
+            return (dCoordinate + 1000.0) % 1000.0;
         }
 
         public double PosX { get { return mPosX; } set { mPosX = clacValidCoordinate(value); } }
