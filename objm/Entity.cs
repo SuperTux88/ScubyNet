@@ -16,7 +16,14 @@ namespace ScubyNet.obj
 			moParent = voParent;
 			mlID = vlID;
 		}
-		
+
+        public Point getPositionNextFrame ()
+        {
+            Point retPoint = new Point(0.0,0.0,0.0);
+
+            return retPoint;
+        }
+
 		public long ID { get { return mlID; } }
         
 		public int Speed { get { return mlSpeed; } set { mlSpeed = value; } }

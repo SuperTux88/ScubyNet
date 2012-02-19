@@ -27,9 +27,12 @@ namespace ScubyNet
 			string p = vsParam.Trim();
 			if (p.StartsWith("{") && p.EndsWith("}")) {
 				long id;
-				if (!long.TryParse(p.Substring(1, p.Length - 2), out id)) 
+				if (!long.TryParse(p.Substring(1, p.Length - 2).Trim(), out id)) 
 					return null;
-				return World.TheWorld.GetEntity(id).Position;
+                Entity e = World.TheWorld.GetEntity(id);
+                if (e == null)
+                    return null;
+				return e.Position;
 			} else if (p.StartsWith("(") && p.EndsWith(")") && p.IndexOf('|') > 0) {
 				int pos = p.IndexOf('|');
 				string px = p.Substring(1, pos-1).Trim();
