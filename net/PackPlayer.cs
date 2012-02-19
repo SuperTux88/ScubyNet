@@ -5,6 +5,7 @@ namespace ScubyNet.net
 	public class PackPlayer : Packet
 	{
 		private long mlPublicID;
+        private int miScore;
 		private double mfX;
 		private double mfY;
 		private double mfDir;
@@ -18,6 +19,7 @@ namespace ScubyNet.net
 		public PackPlayer () {}
 		
 		public long PlayerId { get { return mlPublicID; } }
+        public int Score { get { return miScore; } set { miScore = value; } }
 		public double PosX { get { return mfX; } }
 		public double PosY { get { return mfY; } }
 		public double Direction { get { return mfDir; } }

@@ -51,7 +51,7 @@ namespace ScubyNet
 			Packet p;
 			bool initdone=false;
 			while ((p = Packet.Read(c)) != null) {
-				
+				// Packet = 3
 				if (p is PackWorld) {
 					moWorld.WorldTrip();
 					foreach (Connection conn in mcConnections.Values) {
@@ -75,12 +75,24 @@ namespace ScubyNet
 					oShot.UpdateFromPacket(oPS);
 					oShot.Parent.moShot = oShot;
 
+                // Packet = 6
+                }else if (p is PackScoreboard) {
+                    PackScoreboard oSB = p as PackScoreboard;
+                    oSB.refreshPlayerScores(moWorld);
+
+                // Packet = 7
+                } else if (p is PackScoreboard) {
+                    PackPlayerJoinedMessage oPJ = p as PackPlayerJoinedMessage;
+                    moWorld.setPlayerName(oPJ.PublicId, oPJ.PlayerName);
                 // Packet = 8
                 } else if (p is PackPlayerLeftMessage) {
                     PackPlayerLeftMessage oPL = p as PackPlayerLeftMessage;
                     moWorld.removePlayer(oPL.PublicID);
                 // Packet = 9
-                } //else
+                } else if (p is PackPlayerName) {
+                    PackPlayerName oPN = p as PackPlayerName;
+                    moWorld.setPlayerName(oPN.PublicId, oPN.PlayerName);
+                }
 				
 				
 				// finally process world events and feed the dsl – njomnjom
