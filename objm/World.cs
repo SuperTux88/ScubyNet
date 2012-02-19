@@ -60,7 +60,7 @@ namespace ScubyNet.obj
 			foreach (Shot oShot in mcoShots.Values) {
 				if (oShot.cease()) {
 					ids.Add(oShot.ID);
-					oShot.Parent.moShot = null;
+					oShot.Parent.Shot = null;
 				}
 			}
 			foreach (long id in ids)

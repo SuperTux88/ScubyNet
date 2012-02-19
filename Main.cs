@@ -50,11 +50,23 @@ namespace ScubyNet
 		
 		private void PlayerEntered(Player p) { 
 			Console.WriteLine("Player " + p.Name + "(" + p.ID + ") entered the game"); 
-			p.PlayerLeft += PlayerLeft; 
+			p.PlayerLeft += PlayerLeft;
+			p.ShotFired += PlayerShot;
+			p.PlayerRenamed += PlayerRenamed;
 		}
+		
 		private void PlayerLeft(Player p) { 
 			Console.WriteLine("Player " + p.Name + "(" + p.ID + ") left the game"); 
 		}	
+		
+		private void PlayerShot(Player p) {
+			Console.WriteLine("Player " + p.Name + "(" + p.ID + ") fired a shot"); 
+		}
+		
+		private void PlayerRenamed(Player p) {
+			Console.WriteLine("Player " + p.ID + " renamed to " + p.Name); 
+		}
+		
 		
 		public void ProcessPackages() {
 			Packet p;
@@ -86,7 +98,7 @@ namespace ScubyNet
 					PackShot oPS = p as PackShot;
 					Shot oShot = moWorld.GetShot(oPS.PlayerId);
 					oShot.UpdateFromPacket(oPS);
-					oShot.Parent.moShot = oShot;
+					oShot.Parent.Shot = oShot;
 
                 // Packet = 6
                 }else if (p is PackScoreboard) {
@@ -94,7 +106,7 @@ namespace ScubyNet
                     oSB.refreshPlayerScores(moWorld);
 
                 // Packet = 7
-                } else if (p is PackScoreboard) {
+                } else if (p is PackPlayerJoinedMessage) {
                     PackPlayerJoinedMessage oPJ = p as PackPlayerJoinedMessage;
                     moWorld.setPlayerName(oPJ.PublicId, oPJ.PlayerName);
                 // Packet = 8

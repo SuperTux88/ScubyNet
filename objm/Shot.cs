@@ -9,7 +9,9 @@ namespace ScubyNet.obj
 		private double mfLifetime = 0.0;
 		private bool mbCease = false;
 		
-		public Shot (World voParent, long id) : base(voParent, id){}
+		public Shot (World voParent, long id) : base(voParent, id) { 
+			
+		}
 		
 		internal void UpdateFromPacket(ScubyNet.net.PackShot voPacket) {
 			mbCease = false;
@@ -18,7 +20,7 @@ namespace ScubyNet.obj
             this.Position.Direction = voPacket.Direction;
 			this.Radius = voPacket.Radius;
 			this.Speed = voPacket.Speed;
-			//this.ParentId = voPacket.ParentId; << sinnfrei, bleibt immer gleich
+			this.ParentId = voPacket.ParentId; //<< sinnfrei, bleibt immer gleich
 			this.Lifetime = voPacket.Lifetime;
 		}
 		
