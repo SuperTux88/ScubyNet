@@ -28,13 +28,16 @@ namespace ScubyNet.obj
         }
 		
 		
-		public Point GitHitpoint(Entity voTarget) {
+		public Point GitHitpoint(Entity voTarget, bool vbShoot) {
 			double dist = this.Position.getShortestDistanceTo(voTarget.Position);
-			double time = dist / vShootspeed;
+			double time = dist / vbShoot?vShootspeed:this.Speed;
 			
-			Position 
+			Point p = new Point(voTarget.Direction);
+			p.PosX *= time * voTarget.Speed;
+			p.PosY *= time * voTarget.Speed;
+			Point target = voTarget.Position.Add(p);
 			
-			return null;
+			return target;
 		}
 		
 		
