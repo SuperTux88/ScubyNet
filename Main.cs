@@ -27,7 +27,7 @@ namespace ScubyNet
 			
 			mc.c = new Connection(sName, sURL, lPort);
 			mc.mcConnections.Add(mc.c.ID, mc.c);
-			for (int i=0;i<	40; i++) {
+			for (int i=0;i<	4; i++) {
 				Connection oC = new Connection(sName, sURL, lPort);
 				mc.mcConnections.Add(oC.ID, oC);
 				new Thread(new ThreadStart(new DummyReader(oC).Read)).Start();
@@ -42,7 +42,7 @@ namespace ScubyNet
 			private Connection moConn;
 			public DummyReader(Connection voConn) { moConn = voConn; }
 			public void Read() {
-				Packet p; while ((p = Packet.Read(moConn)) != null);
+				while (Packet.Read(moConn) != null);
 				Console.WriteLine("ouch: null packet");
 			}
 		}
@@ -54,6 +54,9 @@ namespace ScubyNet
 				// Packet = 3
 				if (p is PackWorld) {
 					moWorld.WorldTrip();
+					
+					// dummy code
+					// entfernen, sobald dsl im ansatz funzt >> DAS IST HEUTE
 					foreach (Connection conn in mcConnections.Values) {
 						int x = (int)(DateTime.Now.Ticks % 3);
 						bool l = x == 1;
@@ -61,7 +64,8 @@ namespace ScubyNet
 						PackAction pa = new PackAction(l, r, true, true);
 						byte[] buf = pa.Build();
 						conn.SendBytes(ref buf);
-					}		
+					}
+					
 				// Packet = 0
 				} else if (p is PackPlayer) {
 					PackPlayer oPP = p as PackPlayer;

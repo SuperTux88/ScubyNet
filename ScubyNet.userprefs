@@ -1,17 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="net/Packet.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="net/Connection.cs">
     <Files>
-      <File FileName="net/Connection.cs" Line="40" Column="1" />
-      <File FileName="net/Packet.cs" Line="95" Column="1" />
+      <File FileName="net/Connection.cs" Line="23" Column="49" />
+      <File FileName="net/Packet.cs" Line="19" Column="58" />
       <File FileName="net/PackHandshake.cs" Line="19" Column="63" />
-      <File FileName="net/PackPlayer.cs" Line="33" Column="1" />
+      <File FileName="net/PackPlayer.cs" Line="31" Column="10" />
       <File FileName="net/PackShot.cs" Line="40" Column="11" />
       <File FileName="net/PackUnknown.cs" Line="19" Column="29" />
       <File FileName="net/PackWorld.cs" Line="19" Column="17" />
-      <File FileName="Main.cs" Line="30" Column="21" />
+      <File FileName="Main.cs" Line="48" Column="4" />
       <File FileName="objm/World.cs" Line="44" Column="10" />
-      <File FileName="objm/Player.cs" Line="13" Column="31" />
+      <File FileName="objm/Player.cs" Line="13" Column="30" />
       <File FileName="inp/InpScript.cs" Line="52" Column="40" />
       <File FileName="inp/inp.lang.txt" Line="39" Column="1" />
       <File FileName="inp/InpEvent.cs" Line="29" Column="44" />
