@@ -14,8 +14,12 @@ namespace ScubyNet.obj
 		
 		private Dictionary<long, Player> mcoPlayers = new Dictionary<long, Player>();
 		private Dictionary<long, Shot> mcoShots = new Dictionary<long, Shot>();
+		internal string msOwner;
 		
-		public World () { }
+		public World (string vsPlayername ) {
+			msOwner = vsPlayername; 
+			// todo: infect world with InpEvents
+		}
 		
 		public Player GetPlayer(long id) {
 			Player oRet = null;

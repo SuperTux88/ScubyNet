@@ -18,6 +18,7 @@ namespace ScubyNet.obj
 		private bool mbThrust = false;
 		private bool mbFire = false;
 		private Shot moShot = null;
+	
 		
 		public Player (World voParent, long id) : base(voParent, id)
 		{
@@ -71,6 +72,7 @@ namespace ScubyNet.obj
 			} 
 		}
 		public bool CanShoot { get { return Shot == null; } }
+		public bool IsFriend { get { return msName.StartsWith(moParent.msOwner); } }
 		
 	}
 }

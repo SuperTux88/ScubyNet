@@ -13,12 +13,11 @@ namespace ScubyNet
 	{
 		private Connection c;
 		private Dictionary<long, Connection> mcConnections = new Dictionary<long, Connection>();
-		private World moWorld = new World();
+		private World moWorld;
 		public class DummyReader {
 			private Connection moConn;
 			public DummyReader(Connection voConn) { moConn = voConn; }
 			public void Read() {
-				//while (Packet.Read(moConn) != null);
 				byte[] dummy = new byte[1024];
 				while (moConn.RetreiveBytes(ref dummy) >= 0);
 				Console.WriteLine("ouch: null packet");
@@ -27,12 +26,14 @@ namespace ScubyNet
 		
 		public static void Main (string[] args)
 		{
-			string sName = "Borg";
+			string sName = "nyan";
 			string sURL = "10.1.1.19";
 			//string sURL = "test.scubywars.de";
 			int lPort = 1337;
 			
 			MainClass mc = new MainClass();
+			mc.moWorld = new World(sName);
+			
 			mc.moWorld.PlayerEntered += mc.PlayerEntered;
 			
 			mc.c = new Connection(sName, sURL, lPort);
@@ -42,9 +43,9 @@ namespace ScubyNet
 				mc.mcConnections.Add(oC.ID, oC);
 				new Thread(new ThreadStart(new DummyReader(oC).Read)).Start();
 			}
-			
-			
+					
 			new Thread(new ThreadStart(mc.ProcessPackages)).Start();
+			
 			
 		}
 		
@@ -60,7 +61,14 @@ namespace ScubyNet
 		}	
 		
 		private void PlayerShot(Player p) {
-			Console.WriteLine("Player " + p.Name + "(" + p.ID + ") fired a shot"); 
+			if (!p.IsFriend)
+				Console.WriteLine("Player " + p.Name + "(" + p.ID + ") fired a shot"); 
+			else
+				p.Shot.ShotCeased += ShotCease;
+		}
+		
+		private void ShotCease(Shot s) {
+			Console.WriteLine(s.Parent.Name + "'s shot ceased");
 		}
 		
 		private void PlayerRenamed(Player p) {
@@ -70,22 +78,17 @@ namespace ScubyNet
 		
 		public void ProcessPackages() {
 			Packet p;
-			bool initdone=false;
 			while ((p = Packet.Read(c)) != null) {
 				// Packet = 3
 				if (p is PackWorld) {
 					moWorld.WorldTrip();
+									
+					// finally process world events and feed the dsl – njomnjom
+					//if (!initdone) { // alles dummy: hier müssen erst mal listen gesammelt und events generiert werden
+					//	ScubyNet.inp.InpCommand.RunCommand("move");
+					//	initdone = true;
+					//}
 					
-					// dummy code
-					// entfernen, sobald dsl im ansatz funzt >> DAS IST HEUTE
-					foreach (Connection conn in mcConnections.Values) {
-						int x = (int)(DateTime.Now.Ticks % 3);
-						bool l = x == 1;
-						bool r = x == 2;
-						PackAction pa = new PackAction(l, r, true, true);
-						byte[] buf = pa.Build();
-						conn.SendBytes(ref buf);
-					}
 					
 				// Packet = 0
 				} else if (p is PackPlayer) {
@@ -119,12 +122,6 @@ namespace ScubyNet
                     moWorld.setPlayerName(oPN.PublicId, oPN.PlayerName);
                 }
 				
-				
-				// finally process world events and feed the dsl – njomnjom
-				if (!initdone) { // alles dummy: hier müssen erst mal listen gesammelt und events generiert werden
-					ScubyNet.inp.InpCommand.RunCommand("move");
-					initdone = true;
-				}
 			}
 			Console.WriteLine("got null package. exiting");
 		}

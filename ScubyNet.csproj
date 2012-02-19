@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -79,11 +79,13 @@
     <Compile Include="objm\Shot.cs" />
     <Compile Include="objm\Entity.cs" />
     <Compile Include="inp\InpScript.cs" />
-    <Compile Include="inp\InpEvent.cs" />
     <Compile Include="net\PackAction.cs" />
     <Compile Include="inp\cmd\CmdMove.cs" />
     <Compile Include="inp\InpCommand.cs" />
     <Compile Include="inp\cmd\CmdStop.cs" />
+    <Compile Include="inp\InpScriptEvent.cs" />
+    <Compile Include="inp\InpEvent.cs" />
+    <Compile Include="inp\events\EventShot.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
@@ -91,4 +93,7 @@
     <None Include="inp\inp.lang.txt" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="inp\events\" />
+  </ItemGroup>
 </Project>

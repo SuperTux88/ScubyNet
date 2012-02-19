@@ -15,7 +15,7 @@ namespace ScubyNet.inp
 					Console.WriteLine(t.ToString());
 					InpCommand oCmd = Assembly.GetExecutingAssembly().CreateInstance(t.FullName) as InpCommand;
 					if (oCmd != null) {
-						Console.WriteLine("found command" + oCmd.Name);
+						Console.WriteLine("found command " + oCmd.Name);
 						mcCommands.Add(oCmd.Name, oCmd);
 					}
 				}	

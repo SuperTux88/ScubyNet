@@ -1,35 +1,39 @@
 using System;
+using System.Reflection;
 using System.Collections.Generic;
+using ScubyNet.obj;
 
 namespace ScubyNet.inp
 {
-	public class InpEvent
+	public abstract class InpEvent
 	{
-		private InpScript moParent;
-		private string msEventName;
-		private string[] msCommands;
+		private static Dictionary<string, InpEvent> gcoEvents = new Dictionary<string, InpEvent>();
 		
-		public InpEvent(InpScript voParent, string vsEventName, List<string> vcsCommands)
-		{
-			moParent = voParent;
-			int lPos = vsEventName.IndexOf("=");
-			if (lPos > 0 ) {
-				msEventName = vsEventName.Substring(0, lPos).Trim();
-			} else {
-				msEventName = vsEventName;
+		static InpEvent() {
+			Console.WriteLine("collecting events");
+			foreach (Type t in Assembly.GetExecutingAssembly().GetTypes()) {
+				if (t.Namespace.Equals("ScubyNet.inp.events")) {
+					Console.WriteLine(t.ToString());
+					InpEvent oEvent = Assembly.GetExecutingAssembly().CreateInstance(t.FullName) as InpEvent;
+					if (oEvent != null) {
+						Console.WriteLine("found event " + oEvent.Name);
+						gcoEvents.Add(oEvent.Name, oEvent);
+					}
+				}	
 			}
-			msCommands = vcsCommands.ToArray();
 		}
 		
-		public string Name { get { return msEventName; } } 
-		
-		public void Trigger() {
-			foreach (string sLine in msCommands) { 
-				string[] sParts = sLine.Split(' ');
-				if (InpCommand.HasCommand(sParts[0])) {
-					InpCommand.RunCommand(sLine);
-				}
+		public static void ConsumeWorld(World w) {
+			foreach (InpEvent oEvent in gcoEvents.Values) {
+				
 			}
+		}
+		
+		public abstract string Name { get; }
+		public abstract void Consume(World w);
+		
+		public InpEvent ()
+		{
 		}
 	}
 }

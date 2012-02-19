@@ -7,7 +7,7 @@ namespace ScubyNet.inp
 	public class InpScript
 	{
 		
-		private Dictionary<string, InpEvent> mcoEvents = new Dictionary<string, InpEvent>();
+		private Dictionary<string, InpScriptEvent> mcoEvents = new Dictionary<string, InpScriptEvent>();
 		
 		private InpScript ()
 		{
@@ -30,7 +30,7 @@ namespace ScubyNet.inp
 					if (started) {
 						if (line.StartsWith("!")) {
 							if (sEvent.Length != 0) {
-								InpEvent oEvent = new InpEvent(oRet, sEvent, csBuf);
+								InpScriptEvent oEvent = new InpScriptEvent(oRet, sEvent, csBuf);
 								oRet.mcoEvents.Add(sEvent, oEvent);
 								csBuf.Clear();
 							}
@@ -49,12 +49,12 @@ namespace ScubyNet.inp
 				}
 			}
 			if (sEvent.Length > 0) {
-				InpEvent oEvent = new InpEvent(oRet, sEvent, csBuf);
+				InpScriptEvent oEvent = new InpScriptEvent(oRet, sEvent, csBuf);
 				oRet.mcoEvents.Add(sEvent, oEvent);
 			}
 			
 			Console.WriteLine("Checking...");
-			foreach (InpEvent oEvent in oRet.mcoEvents.Values) {
+			foreach (InpScriptEvent oEvent in oRet.mcoEvents.Values) {
 				
 			}
 			

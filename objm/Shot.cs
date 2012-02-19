@@ -4,6 +4,10 @@ namespace ScubyNet.obj
 {
 	public class Shot : Entity
 	{
+		public delegate void ShotEvent(Shot s);
+		
+		public event ShotEvent ShotCeased;
+		
 		private int mlSpeed = 0;
 		private long mlParentId = -1;
 		private double mfLifetime = 0.0;
@@ -27,8 +31,11 @@ namespace ScubyNet.obj
 		internal bool cease() {
 			if (!mbCease)
 				mbCease = true;
-			else
+			else {
+				if (ShotCeased != null)
+					ShotCeased(this);
 				return true;
+			}
 			return false;
 		}
 		
