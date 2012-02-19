@@ -86,6 +86,7 @@
     <Compile Include="inp\InpScriptEvent.cs" />
     <Compile Include="inp\InpEvent.cs" />
     <Compile Include="inp\events\EventShot.cs" />
+    <Compile Include="inp\events\EventRespawn.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />

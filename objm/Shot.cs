@@ -8,7 +8,6 @@ namespace ScubyNet.obj
 		
 		public event ShotEvent ShotCeased;
 		
-		private int mlSpeed = 0;
 		private long mlParentId = -1;
 		private double mfLifetime = 0.0;
 		private bool mbCease = false;
@@ -39,7 +38,6 @@ namespace ScubyNet.obj
 			return false;
 		}
 		
-		public override int Speed { get { return mlSpeed; } set { mlSpeed = value; } }
 		public long ParentId { get { return mlParentId; } set { mlParentId = value; } }
 		public Player Parent { get { return moParent.GetPlayer(ParentId); } }
 		public double Lifetime { get { return mfLifetime; } set { mfLifetime = value; } }

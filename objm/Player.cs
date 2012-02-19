@@ -8,6 +8,9 @@ namespace ScubyNet.obj
 		public event PlayerEvent PlayerLeft;
 		public event PlayerEvent ShotFired;
 		public event PlayerEvent PlayerRenamed;
+		public event PlayerEvent DirectionChanged;
+		public event PlayerEvent ThrustChanged;
+		
 		
 		
 		private string msName = "unknown";
@@ -32,6 +35,7 @@ namespace ScubyNet.obj
             this.Score = voPack.Score;
 
 			this.Radius = voPack.Radius;
+			this.Speed = voPack.Speed;
 			this.RotationSpeed = voPack.RotationSpeed;
 			this.Left = voPack.Left;
 			this.Right = voPack.Right;
@@ -40,10 +44,11 @@ namespace ScubyNet.obj
 		}
 	
 		public void FireLeave() {
-			PlayerLeft(this);
+			if (PlayerLeft != null)
+				PlayerLeft(this);
 		}
 		
-		public override int Speed { get { return 100; } set { } }
+		//public override int Speed { get { return 100; } set { } }
 		public string Name { 
 			get { return msName; } 
 			set { 
@@ -54,11 +59,40 @@ namespace ScubyNet.obj
 				}
 			} 
 		}
+		
+		
         public int Score { get { return mScore; } set { mScore = value; } }
 		public double RotationSpeed { get { return mfRotSpd; } set { mfRotSpd = value; } }
-		public bool Left { get { return mbLeft; } set { mbLeft = value; } }
-		public bool Right { get { return mbRight; } set { mbRight = value; } }
-		public bool Thrust { get { return mbThrust; } set { mbThrust = value; } }
+		public bool Left { 
+			get { return mbLeft; } 
+			internal set {
+				if (value != mbLeft) {
+					if (DirectionChanged != null)
+						DirectionChanged(this);
+					mbLeft = value;
+				}
+			} 
+		}
+		public bool Right { 
+			get { return mbRight; } 
+			internal set { 
+				if (value != mbRight) {
+					if (DirectionChanged != null)
+						DirectionChanged(this);
+					mbRight = value; 
+				}
+			} 
+		}
+		public bool Thrust { 
+			get { return mbThrust; } 
+			internal set {
+				if (value != mbThrust) {
+					if (ThrustChanged != null)
+						ThrustChanged(this);
+					mbThrust = value;
+				}
+			} 
+		}
 		public bool Fire { get { return mbFire; } set { mbFire = value; } }
 		public Shot Shot { 
 			get { return moShot; } 

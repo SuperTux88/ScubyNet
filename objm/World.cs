@@ -19,6 +19,7 @@ namespace ScubyNet.obj
 		public World (string vsPlayername ) {
 			msOwner = vsPlayername; 
 			// todo: infect world with InpEvents
+			ScubyNet.inp.InpEvent.ConsumeWorld(this);
 		}
 		
 		public Player GetPlayer(long id) {
@@ -69,6 +70,30 @@ namespace ScubyNet.obj
 			}
 			foreach (long id in ids)
 				mcoShots.Remove(id);
+		}
+		
+		public Dictionary<long, Player> Players { get { return mcoPlayers; } } 
+		public Dictionary<long, Player> Friends { 
+			get { 
+				Dictionary<long, Player> oRet = new Dictionary<long, Player>();
+				lock (mcoPlayers) {
+					foreach (Player p in mcoPlayers.Values)
+						if (p.IsFriend)
+							oRet.Add(p.ID, p);
+				}
+				return oRet;
+			}
+		}
+		public Dictionary<long, Player> Enemies { 
+			get { 
+				Dictionary<long, Player> oRet = new Dictionary<long, Player>();
+				lock (mcoPlayers) {
+					foreach (Player p in mcoPlayers.Values)
+						if (!p.IsFriend)
+							oRet.Add(p.ID, p);
+				}
+				return oRet;
+			}
 		}
 		
 	}

@@ -10,6 +10,7 @@ namespace ScubyNet.net
 		private double mfY;
 		private double mfDir;
 		private int mlRadius;
+		private int mlSpeed;
 		private double mfRot;
 		private bool mbLeft;
 		private bool mbRight;
@@ -24,6 +25,7 @@ namespace ScubyNet.net
 		public double PosY { get { return mfY; } }
 		public double Direction { get { return mfDir; } }
 		public int Radius { get { return mlRadius; } }
+		public int Speed { get { return mlSpeed; } }
 		public double RotationSpeed { get { return mfRot; } }
 		public bool Left { get { return mbLeft; } }
 		public bool Right { get { return mbRight; } }
@@ -37,11 +39,12 @@ namespace ScubyNet.net
 			mfY = readFloatFrom(ref rbData, 12);
 			mfDir = readFloatFrom(ref rbData, 16);
 			mlRadius = readShortFrom(ref rbData, 20);
-			mfRot = readFloatFrom(ref rbData, 22);
-			mbLeft = readByteFrom(ref rbData, 26) != 0;
-			mbRight = readByteFrom(ref rbData, 27) != 0;
-			mbThrust = readByteFrom(ref rbData, 28) != 0;
-			mbFire = readByteFrom(ref rbData, 29) != 0;
+			mlSpeed = readShortFrom(ref rbData, 22);
+			mfRot = readFloatFrom(ref rbData, 24);
+			mbLeft = readByteFrom(ref rbData, 28) != 0;
+			mbRight = readByteFrom(ref rbData, 29) != 0;
+			mbThrust = readByteFrom(ref rbData, 30) != 0;
+			mbFire = readByteFrom(ref rbData, 31) != 0;
 			return this;
 		}
 		

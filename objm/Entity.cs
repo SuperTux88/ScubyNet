@@ -9,6 +9,7 @@ namespace ScubyNet.obj
         private Point mPos = new Point(0.0, 0.0, 0.0);
 		private double mfDir = 0.0;
 		private int mlRadius = 0;
+		private int mlSpeed = 0;
 		
 		protected Entity (World voParent, long vlID)
 		{
@@ -18,10 +19,10 @@ namespace ScubyNet.obj
 		
 		public long ID { get { return mlID; } }
         
+		public int Speed { get { return mlSpeed; } set { mlSpeed = value; } }
 		public double Direction { get { return mfDir; } set { mfDir = value; } }
 		public int Radius { get { return mlRadius; } set { mlRadius	= value; } }
-		public abstract int Speed { get; set; }
-        public Point Position { get { return mPos; } }
+	    public Point Position { get { return mPos; } }
 
 
 	}

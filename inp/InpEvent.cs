@@ -25,16 +25,13 @@ namespace ScubyNet.inp
 		
 		public static void ConsumeWorld(World w) {
 			foreach (InpEvent oEvent in gcoEvents.Values) {
-				
+				oEvent.Consume(w);
 			}
 		}
 		
 		public abstract string Name { get; }
 		public abstract void Consume(World w);
 		
-		public InpEvent ()
-		{
-		}
 	}
 }
 
