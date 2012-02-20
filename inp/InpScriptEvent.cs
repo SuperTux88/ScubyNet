@@ -85,9 +85,9 @@ namespace ScubyNet.inp
 				string sfkt = asParts[0].Trim();
 				string[] asParams = null;
 				if (asParts.Length > 0) {
-					asParams = asParts[1].Replace(',',' ').Trim().Split(' ');
+					asParams = asParts[1].Replace(',',' ').Replace("  "," ").Trim().Split(' ');
 				}
-				sret += InpFunction.RunFunction(sfkt, asParams);
+				sret = InpFunction.RunFunction(sfkt, asParams);
 			}
 			
 			return sret;
@@ -109,9 +109,9 @@ namespace ScubyNet.inp
 				if (lP.Count == 0) return "(500.0|500.0)";
 				if (lP.Count == 1) return "(" + lP[0].PosX.ToString() + "|" + lP[0].PosY.ToString() + ")";
 				Point pRet = lP[0];
-				double dist = me.Position.getDistanceTo(pRet);
+				double dist = me.Position.getShortestDistanceTo(pRet);
 				for (int i=1; i<lP.Count; i++) {
-					double dist2 = me.Position.getDistanceTo(lP[i]);
+					double dist2 = me.Position.getShortestDistanceTo(lP[i]);
 					if ((EMin && dist2 < dist) || (!EMin && dist2 > dist)) {
 						dist = dist2;
 						pRet = lP[i];
@@ -162,7 +162,7 @@ namespace ScubyNet.inp
 		private double GetDiffToEntity(Player me, Entity e) {
 			double dRet = EMin?double.MaxValue:double.MinValue;
 			switch (EntityOrder) {
-			case EOrder.DISTANCE: dRet = me.Position.getDistanceTo(e.Position); break;
+			case EOrder.DISTANCE: dRet = me.Position.getShortestDistanceTo(e.Position); break;
 			case EOrder.ANGLE: Console.WriteLine("IMPLEMENT ANGLE DIFF"); break;
 			case EOrder.TIME: Console.WriteLine("IMPLEMENT TIME DIFF"); break;
 			}
@@ -205,11 +205,9 @@ namespace ScubyNet.inp
 		public void Trigger(Connection voConn) {
 			bool nextif = false;
 			foreach (string sLine in msCommands) { 
-				Console.WriteLine("processing: " + sLine);
 				string sFullLine = sLine.Replace("_", "{" + voConn.ID + "}" ); 
 				
-				//if (msEventCondition.Length == 0) 
-					sFullLine = sFullLine.Replace("*", GetStarValue(voConn) ); // ANDERS!!!!!!!!! NOOOOOOOT
+				sFullLine = sFullLine.Replace("*", GetStarValue(voConn) ); 
 				
 				sFullLine = Eval(sFullLine, false).Trim();
 				if (sFullLine.Contains("{ERR")) {
@@ -218,38 +216,36 @@ namespace ScubyNet.inp
 					continue;
 				}
 				
-				if (nextif)
+				if (nextif) {
 					if (sFullLine.Equals(".")) {
 						nextif = false;
 						continue;
 					} else if (sFullLine.StartsWith("?")) {
 						nextif = false;
-					}
-				
+					} else 
+						continue;
+				}
 				if (sFullLine.Equals(".")) continue;
-				Console.WriteLine("process line: " + sFullLine);
 				
 				if (sFullLine.StartsWith("?")) {
 					string sCompare = sFullLine.Substring(1).Trim();
 					if (!MatchCondition(sCompare)) {
 						nextif = true;
+					} else { 
+						Console.WriteLine(sCompare + " is true!");
 					}	
 				} else if (InpCommand.HasCommand(sFullLine.Split(' ')[0].Trim())) {
+					Console.WriteLine("process line: " + sFullLine);
 					InpCommand.RunCommand(sFullLine, voConn);
 				} else { 
 					// unknown
+					Console.WriteLine("Dunno what to do with: " + sFullLine); 
 				}
 				
 				
 			}
 		}
-					
-		private bool ProcessBlock(List<string> sList, Connection voConn) {
-			foreach (string sLine in sList) {
-				
-			}
-			return true;
-		}
+	
 	}
 }
 

@@ -6,13 +6,25 @@ itsnotpython
 
 
 !ENTER / MY PLAYER
-	? _ != *  
+	? _ == *  
 		start move fire
 	.
 
 
-!ALWAYS / OTHER HITPOINT BY MIN DISTANCE
-	target *
+!WORLD / OTHER HITPOINT BY MIN DISTANCE
+	stop left right fire
+	? [angle: _, *] > 0.2
+		start move right
+	.
+	? [angle: _, *] < -0.2
+		start move left
+	.
+	? [dist: _, *] < 50
+		stop move
+	.
+	? [dist: _, *] < 400
+		start fire
+	.
 
 
 // !SHOOT

@@ -31,10 +31,11 @@ namespace ScubyNet.obj
 		
 		public delegate void ShotEvent(Shot s);
 		public delegate void PlayerEvent(Player p);
+		public delegate void WorldEvent();
 		
 		public event ShotEvent ShotFired;
 		public event PlayerEvent PlayerEntered;
-		
+		public event WorldEvent WorldRefreshed;
 		
 		private Dictionary<long, Player> mcoPlayers = new Dictionary<long, Player>();
 		private Dictionary<long, Shot> mcoShots = new Dictionary<long, Shot>();
@@ -59,6 +60,11 @@ namespace ScubyNet.obj
 					Console.WriteLine("Event " + oSE.Name + " not found");
 				}
 			}
+		}
+		
+		internal void FireWorldEvent() {
+			if (WorldRefreshed != null)
+				WorldRefreshed();
 		}
 		
 		public Player GetPlayer(long id) {

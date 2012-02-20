@@ -51,14 +51,30 @@ namespace ScubyNet.obj
 		}
 
 		
+		public double getAngleToShortest(Point voPoint) {
+			double x = (this.PosX < 500)? 1000:-1000;
+			double y = (this.PosY < 500)? 1000:-1000;
+			Point p2 = new Point(voPoint.PosX + x, voPoint.PosY); 
+			Point p3 = new Point(voPoint.PosX, voPoint.PosY + y); 
+			Point p4 = new Point(voPoint.PosX + x, voPoint.PosY + y);
+			double dist = getDistanceTo(voPoint);
+			double angle = getAngle(voPoint);
+			double dist2 = getDistanceTo(p2); if (dist2 < dist) {angle=getAngle(p2); dist = dist2; }
+			       dist2 = getDistanceTo(p3); if (dist2 < dist) {angle=getAngle(p3); dist = dist2; }
+			       dist2 = getDistanceTo(p4); if (dist2 < dist) {angle=getAngle(p4); dist = dist2; }
+			return angle;
+		}
+		
         public double getAngle(Point voPoint)
         {
-            return Math.Atan2(
-                    (voPoint.PosY - this.PosY), 
-                    (voPoint.PosX - this.PosX)
-                   );
+            return Math.Atan2((voPoint.PosY - this.PosY) , (voPoint.PosX - this.PosX) );
         }
-
+		
+		public double tkatan() {
+			return 0.0;
+		}
+			
+			
         private double clacValidCoordinate(double dCoordinate)
         {
             return (dCoordinate + 1000.0) % 1000.0;

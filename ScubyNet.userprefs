@@ -1,27 +1,41 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="net/Connection.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="objm/Point.cs">
     <Files>
-      <File FileName="net/Connection.cs" Line="23" Column="49" />
-      <File FileName="net/Packet.cs" Line="19" Column="58" />
+      <File FileName="net/Connection.cs" Line="50" Column="8" />
+      <File FileName="objm/World.cs" Line="67" Column="22" />
+      <File FileName="net/Packet.cs" Line="97" Column="1" />
+      <File FileName="inp/InpCommand.cs" Line="21" Column="6" />
       <File FileName="net/PackHandshake.cs" Line="19" Column="63" />
-      <File FileName="net/PackPlayer.cs" Line="31" Column="10" />
+      <File FileName="net/PackPlayer.cs" Line="39" Column="2" />
       <File FileName="net/PackShot.cs" Line="40" Column="11" />
       <File FileName="net/PackUnknown.cs" Line="19" Column="29" />
-      <File FileName="net/PackWorld.cs" Line="19" Column="17" />
-      <File FileName="Main.cs" Line="48" Column="4" />
-      <File FileName="objm/World.cs" Line="44" Column="10" />
-      <File FileName="objm/Player.cs" Line="13" Column="30" />
-      <File FileName="inp/InpScript.cs" Line="52" Column="40" />
-      <File FileName="inp/inp.lang.txt" Line="39" Column="1" />
-      <File FileName="inp/InpEvent.cs" Line="29" Column="44" />
-      <File FileName="objm/Entity.cs" Line="24" Column="52" />
-      <File FileName="objm/Shot.cs" Line="33" Column="34" />
-      <File FileName="objm/Point.cs" Line="30" Column="10" />
-      <File FileName="net/PackAction.cs" Line="32" Column="52" />
-      <File FileName="inp/cmd/CmdMove.cs" Line="19" Column="52" />
-      <File FileName="inp/InpCommand.cs" Line="23" Column="4" />
-      <File FileName="inp/cmd/CmdStop.cs" Line="21" Column="4" />
+      <File FileName="net/PackWorld.cs" Line="24" Column="4" />
+      <File FileName="Main.cs" Line="30" Column="24" />
+      <File FileName="objm/Player.cs" Line="9" Column="37" />
+      <File FileName="inp/InpScript.cs" Line="51" Column="6" />
+      <File FileName="inp/inp.lang.txt" Line="31" Column="22" />
+      <File FileName="inp/InpScriptEvent.cs" Line="194" Column="30" />
+      <File FileName="objm/Entity.cs" Line="31" Column="18" />
+      <File FileName="objm/Shot.cs" Line="26" Column="36" />
+      <File FileName="objm/Point.cs" Line="73" Column="27" />
+      <File FileName="net/PackAction.cs" Line="28" Column="3" />
+      <File FileName="inp/cmd/CmdMove.cs" Line="27" Column="2" />
+      <File FileName="inp/cmd/CmdStop.cs" Line="38" Column="6" />
+      <File FileName="AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="net/PackScoreboard.cs" Line="28" Column="5" />
+      <File FileName="net/PackPlayerName.cs" Line="22" Column="58" />
+      <File FileName="net/PackPlayerJoinedMessage.cs" Line="21" Column="13" />
+      <File FileName="inp/InpEvent.cs" Line="28" Column="20" />
+      <File FileName="inp/events/EventShot.cs" Line="12" Column="51" />
+      <File FileName="inp/events/EventRespawn.cs" Line="19" Column="4" />
+      <File FileName="inp/InpFunction.cs" Line="46" Column="31" />
+      <File FileName="inp/fkt/FktHit.cs" Line="15" Column="3" />
+      <File FileName="inp/fkt/FktDist.cs" Line="21" Column="49" />
+      <File FileName="inp/events/EventEnter.cs" Line="8" Column="38" />
+      <File FileName="inp/cmd/CmdStart.cs" Line="21" Column="31" />
+      <File FileName="inp/events/EventWorld.cs" Line="27" Column="17" />
+      <File FileName="inp/fkt/FktGetAngle.cs" Line="38" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -22,6 +22,19 @@ namespace ScubyNet.inp
 				}	
 			}
 		}
+		 
+		
+		protected Entity ResolveEntity(string vsParam) {
+			string p = vsParam.Trim();
+			if (p.StartsWith("{") && p.EndsWith("}")) {
+				long id;
+				if (!long.TryParse(p.Substring(1, p.Length - 2).Trim(), out id)) 
+					return null;
+                Entity e = World.TheWorld.GetEntity(id);
+					return e; 
+			} 
+			return null;
+		}
 		
 		protected Point ResolvePoint(string vsParam) {
 			string p = vsParam.Trim();
@@ -36,7 +49,7 @@ namespace ScubyNet.inp
 			} else if (p.StartsWith("(") && p.EndsWith(")") && p.IndexOf('|') > 0) {
 				int pos = p.IndexOf('|');
 				string px = p.Substring(1, pos-1).Trim();
-				string py = p.Substring(pos +1, p.Length - pos - 1).Trim();
+				string py = p.Substring(pos +1, p.Length - pos - 2).Trim();
 				Point ret = new Point();
 				double dx;
 				double dy;

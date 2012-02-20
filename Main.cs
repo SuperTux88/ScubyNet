@@ -27,8 +27,8 @@ namespace ScubyNet
 		
 		public static void Main (string[] args)
 		{
-			string sName = "nyan";
-			string sURL = "10.1.1.19";
+			string sName = "borg";
+			string sURL = "10.1.1.183";
 			//string sURL = "test.scubywars.de";
 			int lPort = 1337;
 			
@@ -42,7 +42,7 @@ namespace ScubyNet
 			mc.moWorld.RegisterBot(oScript, mc.c);
 			
 			mc.mcConnections.Add(mc.c.ID, mc.c);
-			for (int i=0;i<	4; i++) {
+			for (int i=0;i<	2; i++) {
 				Connection oC = new Connection(sName, sURL, lPort);
 				mc.moWorld.RegisterBot(oScript, oC);
 				mc.mcConnections.Add(oC.ID, oC);
@@ -92,6 +92,8 @@ namespace ScubyNet
 							o.FireNextAction();
 						}
 					}
+					
+					moWorld.FireWorldEvent();
 					
 					// finally process world events and feed the dsl – njomnjom
 					//if (!initdone) { // alles dummy: hier müssen erst mal listen gesammelt und events generiert werden
