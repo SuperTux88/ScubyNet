@@ -39,7 +39,7 @@ namespace ScubyNet.inp
 			if (!mcCommands.ContainsKey(sCommand))
 				Console.WriteLine("command " + sCommand + " not found");
 			else
-				mcCommands[vsName].Run(lsParams, voConn);
+				mcCommands[sCommand].Run(lsParams, voConn);
 		}
 		
 		public abstract string Name { get; }

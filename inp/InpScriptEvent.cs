@@ -170,7 +170,40 @@ namespace ScubyNet.inp
 		}
 		
 		
+		private bool MatchCondition(string vsCondition) {
+			string[] ops = vsCondition.Trim().Split(' ');
+			bool bRet = false;
+			if (ops[0].Trim().Length == 0)
+				return true;
+			if (ops.Length != 3) {
+				Console.WriteLine("ERROR evaluating condition '" + vsCondition + "' > false");
+			} else {
+				string op = ops[1].Trim();
+				string a  = ops[0].Trim();
+				string b  = ops[2].Trim();
+				if (op.Equals("==")) 
+					return a.Equals(b);
+				else if (op.Equals("!="))
+					return !a.Equals(b);
+				else if (op.Equals("<")) {
+					double da, db;
+					if (!double.TryParse(a, out da)) { Console.WriteLine("Comp: Cannot express " + a + " as a number"); return false; }
+					if (!double.TryParse(b, out db)) { Console.WriteLine("Comp: Cannot express " + b + " as a number"); return false; }
+					return da < db;
+				}
+				else if (op.Equals(">")) {
+					double da, db;
+					if (!double.TryParse(a, out da)) { Console.WriteLine("Comp: Cannot express " + a + " as a number"); return false; }
+					if (!double.TryParse(b, out db)) { Console.WriteLine("Comp: Cannot express " + b + " as a number"); return false; }
+					return da > db;
+				}
+				
+			}
+			return bRet;
+		}
+		
 		public void Trigger(Connection voConn) {
+			bool nextif = false;
 			foreach (string sLine in msCommands) { 
 				Console.WriteLine("processing: " + sLine);
 				string sFullLine = sLine.Replace("_", "{" + voConn.ID + "}" ); 
@@ -185,13 +218,26 @@ namespace ScubyNet.inp
 					continue;
 				}
 				
+				if (nextif)
+					if (sFullLine.Equals(".")) {
+						nextif = false;
+						continue;
+					} else if (sFullLine.StartsWith("?")) {
+						nextif = false;
+					}
+				
+				if (sFullLine.Equals(".")) continue;
 				Console.WriteLine("process line: " + sFullLine);
+				
 				if (sFullLine.StartsWith("?")) {
-					
+					string sCompare = sFullLine.Substring(1).Trim();
+					if (!MatchCondition(sCompare)) {
+						nextif = true;
+					}	
 				} else if (InpCommand.HasCommand(sFullLine.Split(' ')[0].Trim())) {
 					InpCommand.RunCommand(sFullLine, voConn);
 				} else { 
-					
+					// unknown
 				}
 				
 				

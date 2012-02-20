@@ -23,7 +23,7 @@ namespace ScubyNet.inp.cmd
 			lock (voConn) {	
 				foreach (string param in vlsParams) {
 					if (param.Equals("move")) {
-						voConn.NextAction.Move = false;
+						voConn.NextAction.Thrust = false;
 					}
 					if (param.Equals("left")) {
 						voConn.NextAction.Left = false;

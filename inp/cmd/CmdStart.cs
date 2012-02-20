@@ -18,7 +18,7 @@ namespace ScubyNet.inp.cmd
 				
 				foreach (string param in vlsParams) {
 					if (param.Equals("move")) {
-						voConn.NextAction.Move = true;
+						voConn.NextAction.Thrust = true;
 					}
 					if (param.Equals("left")) {
 						voConn.NextAction.Left = true;

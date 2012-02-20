@@ -65,14 +65,14 @@ namespace ScubyNet
 		}	
 		
 		private void PlayerShot(Player p) {
-			if (!p.IsFriend)
-				Console.WriteLine("Player " + p.Name + "(" + p.ID + ") fired a shot"); 
-			else
+			//if (!p.IsFriend)
+			//	Console.WriteLine("Player " + p.Name + "(" + p.ID + ") fired a shot"); 
+			//else
 				p.Shot.ShotCeased += ShotCease;
 		}
 		
 		private void ShotCease(Shot s) {
-			Console.WriteLine(s.Parent.Name + "'s shot ceased");
+			//Console.WriteLine(s.Parent.Name + "'s shot ceased");
 		}
 		
 		private void PlayerRenamed(Player p) {

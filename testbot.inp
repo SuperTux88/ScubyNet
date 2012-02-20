@@ -7,9 +7,12 @@ itsnotpython
 
 !ENTER / MY PLAYER
 	? _ != *  
-		move
+		start move fire
 	.
 
+
+!ALWAYS / OTHER HITPOINT BY MIN DISTANCE
+	target *
 
 
 // !SHOOT
