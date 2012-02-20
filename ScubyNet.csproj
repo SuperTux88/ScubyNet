@@ -94,6 +94,7 @@
     <Compile Include="inp\cmd\CmdStart.cs" />
     <Compile Include="inp\events\EventWorld.cs" />
     <Compile Include="inp\fkt\FktGetAngle.cs" />
+    <Compile Include="objm\Vector2D.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />

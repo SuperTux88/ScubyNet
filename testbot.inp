@@ -13,13 +13,13 @@ itsnotpython
 
 !WORLD / OTHER HITPOINT BY MIN DISTANCE
 	stop left right fire
-	? [angle: _, *] > 0.2
-		start move right
-	.
-	? [angle: _, *] < -0.2
+	? [angle: _, (100|100)] > 0.3
 		start move left
 	.
-	? [dist: _, *] < 50
+	? [angle: _, (100|100)] < -0.3
+		start move right
+	.
+	? [dist: _, (100|100)] < 50
 		stop move
 	.
 	? [dist: _, *] < 400

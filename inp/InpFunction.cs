@@ -36,7 +36,7 @@ namespace ScubyNet.inp
 			return null;
 		}
 		
-		protected Point ResolvePoint(string vsParam) {
+		protected Vector2D ResolvePoint(string vsParam) {
 			string p = vsParam.Trim();
 			if (p.StartsWith("{") && p.EndsWith("}")) {
 				long id;
@@ -50,13 +50,13 @@ namespace ScubyNet.inp
 				int pos = p.IndexOf('|');
 				string px = p.Substring(1, pos-1).Trim();
 				string py = p.Substring(pos +1, p.Length - pos - 2).Trim();
-				Point ret = new Point();
+				Vector2D ret = new Vector2D();
 				double dx;
 				double dy;
 				if (!double.TryParse(px, out dx)) return null;
 				if (!double.TryParse(py, out dy)) return null;
-				ret.PosX = dx;
-				ret.PosY = dy;
+				ret.X = dx;
+				ret.Y = dy;
 				return ret;
 			} else 
 				return null;

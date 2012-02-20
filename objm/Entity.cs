@@ -8,7 +8,7 @@ namespace ScubyNet.obj
 		
 		internal World moParent;
 		private long mlID = -1;
-        private Point mPos = new Point(0.0, 0.0);
+        private Vector2D mPos = new Vector2D();
 		private double mfDir = 0.0;
 		private int mlRadius = 0;
 		private int mlSpeed = 0;
@@ -18,35 +18,25 @@ namespace ScubyNet.obj
 			moParent = voParent;
 			mlID = vlID;
 		}
-
-        public Point getPositionNextFrame ()
-        {
-            Point retPoint = new Point(0.0,0.0);
-            
-
-            return retPoint;
-        }
 		
-		
-		public Point GetHitpoint(Entity voTarget, bool vbShoot) {
-			double dist = this.Position.getShortestDistanceTo(voTarget.Position);
+		public Vector2D GetHitpoint(Entity voTarget, bool vbShoot) {
+			double dist = this.Position.VirtualDistanceTo(voTarget.Position);
 			double time = dist / (vbShoot?vShootspeed:this.Speed);
 			
-			Point p = new Point(voTarget.Direction);
-			p.PosX *= time * voTarget.Speed;
-			p.PosY *= time * voTarget.Speed;
-			Point target = voTarget.Position.Add(p);
+			Vector2D p = new Vector2D(voTarget.mlSpeed);
+			p.Angle = voTarget.Direction;
+			p.Mult(time);
+			Vector2D target = voTarget.Position.Add(p);
 			
 			return target;
 		}
-		
 		
 		public long ID { get { return mlID; } }
         
 		public int Speed { get { return mlSpeed; } set { mlSpeed = value; } }
 		public double Direction { get { return mfDir; } set { mfDir = value; } }
 		public int Radius { get { return mlRadius; } set { mlRadius	= value; } }
-	    public Point Position { get { return mPos; } }
+	    public Vector2D Position { get { return mPos; } }
 
 
 	}

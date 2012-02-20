@@ -99,25 +99,25 @@ namespace ScubyNet.inp
 				if (EntityMatch != EMatch.OTHER) {
 					throw new NotImplementedException();			
 				}
-				List<Point> lP = new List<Point>();
+				List<Vector2D> lP = new List<Vector2D>();
 				foreach (Player p in World.TheWorld.Players.Values) {
 					if (!p.IsFriend) {
-						Point pnt = me.GetHitpoint(p, true);
+						Vector2D pnt = me.GetHitpoint(p, true);
 						lP.Add(pnt);
 					}
 				}
 				if (lP.Count == 0) return "(500.0|500.0)";
-				if (lP.Count == 1) return "(" + lP[0].PosX.ToString() + "|" + lP[0].PosY.ToString() + ")";
-				Point pRet = lP[0];
-				double dist = me.Position.getShortestDistanceTo(pRet);
+				if (lP.Count == 1) return "(" + lP[0].X.ToString() + "|" + lP[0].Y.ToString() + ")";
+				Vector2D pRet = lP[0];
+				double dist = me.Position.VirtualDistanceTo(pRet);
 				for (int i=1; i<lP.Count; i++) {
-					double dist2 = me.Position.getShortestDistanceTo(lP[i]);
+					double dist2 = me.Position.VirtualDistanceTo(lP[i]);
 					if ((EMin && dist2 < dist) || (!EMin && dist2 > dist)) {
 						dist = dist2;
 						pRet = lP[i];
 					}
 				}
-				return "(" + pRet.PosX.ToString() + "|" + pRet.PosY.ToString() + ")";
+				return "(" + pRet.X.ToString() + "|" + pRet.Y.ToString() + ")";
 			} else {
 				List<Entity> lEnt = new List<Entity>();
 				if (EntityPool == EPool.ENTITY || EntityPool == EPool.PLAYER) {
@@ -162,7 +162,7 @@ namespace ScubyNet.inp
 		private double GetDiffToEntity(Player me, Entity e) {
 			double dRet = EMin?double.MaxValue:double.MinValue;
 			switch (EntityOrder) {
-			case EOrder.DISTANCE: dRet = me.Position.getShortestDistanceTo(e.Position); break;
+			case EOrder.DISTANCE: dRet = me.Position.VirtualDistanceTo(e.Position); break;
 			case EOrder.ANGLE: Console.WriteLine("IMPLEMENT ANGLE DIFF"); break;
 			case EOrder.TIME: Console.WriteLine("IMPLEMENT TIME DIFF"); break;
 			}

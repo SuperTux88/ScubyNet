@@ -28,8 +28,8 @@ namespace ScubyNet.obj
 		}
 				
 		public void UpdateFromPacket(ScubyNet.net.PackPlayer voPack) {
-			this.Position.PosX      = voPack.PosX;
-			this.Position.PosY      = voPack.PosY;
+			this.Position.X      = voPack.PosX;
+			this.Position.Y      = voPack.PosY;
 			this.Direction = voPack.Direction;
 
             this.Score = voPack.Score;

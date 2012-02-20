@@ -5,32 +5,32 @@ using System.Text;
 
 namespace ScubyNet.obj
 {
-    public class Point
+    public class Point__OLD
     {
         private double mPosX;
         private double mPosY;
         
-        public Point()
+        public Point__OLD()
         {
         }	
-
-        public Point(double vdPosX, double vdPosY)
+		/*
+        public Point__OLD(double vdPosX, double vdPosY)
         {
             mPosX = clacValidCoordinate(vdPosX);
             mPosY = clacValidCoordinate(vdPosY);
         }
 
-        public Point(double vdDirection)
+        public Point__OLD(double vdDirection)
         {
             mPosX = clacValidCoordinate(Math.Cos(vdDirection));
             mPosY = clacValidCoordinate(Math.Sin(vdDirection));
         }
 		
-		public Point Add(Point voP) {
+		public Point__OLD Add(Point voP) {
 			return new Point(this.PosX + voP.PosX, this.PosY + voP.PosY);
 		}
 
-        public double getDistanceTo(Point voPoint) {
+        public double getDistanceTo(Point__OLD voPoint) {
             return Math.Sqrt(
                        Math.Pow((voPoint.PosX - this.PosX), 2)
                      + Math.Pow((voPoint.PosY - this.PosY), 2)
@@ -79,8 +79,9 @@ namespace ScubyNet.obj
         {
             return (dCoordinate + 1000.0) % 1000.0;
         }
-
+		 *
         public double PosX { get { return mPosX; } set { mPosX = clacValidCoordinate(value); } }
         public double PosY { get { return mPosY; } set { mPosY = clacValidCoordinate(value); } }
+        */
     }
 }

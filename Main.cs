@@ -28,7 +28,7 @@ namespace ScubyNet
 		public static void Main (string[] args)
 		{
 			string sName = "borg";
-			string sURL = "10.1.1.183";
+			string sURL = "10.1.1.19";
 			//string sURL = "test.scubywars.de";
 			int lPort = 1337;
 			
@@ -49,7 +49,25 @@ namespace ScubyNet
 				new Thread(new ThreadStart(new DummyReader(oC).Read)).Start();
 			}
 					
-			new Thread(new ThreadStart(mc.ProcessPackages)).Start();
+			//new Thread(new ThreadStart(mc.ProcessPackages)).Start();
+		
+			Vector2D a = new Vector2D(100.0, 100.0);
+			Vector2D b = new Vector2D(800.0, 100.0);
+			
+			Console.WriteLine(a.DistanceTo(b));
+			Console.WriteLine(b.DistanceTo(a));
+			Console.WriteLine(a.VirtualDistanceTo(b));
+			Console.WriteLine(b.VirtualDistanceTo(a));
+			
+			
+			//Console.WriteLine (Math.Atan2(  0.0,  1.0 ));
+			//Console.WriteLine (Math.Atan2(  1.0,  1.0 ));
+			//Console.WriteLine (Math.Atan2(  1.0,  0.0 ));
+			//Console.WriteLine (Math.Atan2(  1.0, -1.0 ));
+			//Console.WriteLine (Math.Atan2(  0.0, -1.0 ));
+			//Console.WriteLine (Math.Atan2( -1.0, -1.0 ));
+			//Console.WriteLine (Math.Atan2( -1.0,  0.0 ));
+			//Console.WriteLine (Math.Atan2( -1.0,  1.0 ));
 			
 		}
 		

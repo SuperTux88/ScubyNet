@@ -18,8 +18,8 @@ namespace ScubyNet.obj
 		
 		internal void UpdateFromPacket(ScubyNet.net.PackShot voPacket) {
 			mbCease = false;
-			this.Position.PosX = voPacket.PosX;
-			this.Position.PosY = voPacket.PosY;
+			this.Position.X = voPacket.PosX;
+			this.Position.Y = voPacket.PosY;
             this.Direction = voPacket.Direction;
 			this.Radius = voPacket.Radius;
 			this.Speed = voPacket.Speed;
