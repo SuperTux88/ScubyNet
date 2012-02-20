@@ -47,15 +47,9 @@ namespace ScubyNet.obj
 		public double VirtualDistanceTo(Vector2D v1) {
 			double dx = (v1.x < (MAX_X/2.0)) ? MAX_X : -MAX_X;
 			double dy = (v1.y < (MAX_Y/2.0)) ? MAX_Y : -MAX_Y;
-			Vector2D v2 = Add( dx, 0.0);
-			Vector2D v3 = Add(0.0,  dy); 
-			Vector2D v4 = Add( dx,  dy); 
-			Console.WriteLine(dx);
-			Console.WriteLine(dy);
-			Console.WriteLine(v1.ToString()); 
-			Console.WriteLine(v2.ToString()); 
-			Console.WriteLine(v3.ToString()); 
-			Console.WriteLine(v4.ToString()); 
+			Vector2D v2 = v1.Add( dx, 0.0);
+			Vector2D v3 = v1.Add(0.0,  dy); 
+			Vector2D v4 = v1.Add( dx,  dy); 
 			double dist =                DistanceTo(v1) ;
 			       dist = Math.Min(dist, DistanceTo(v2));
 			       dist = Math.Min(dist, DistanceTo(v3));
@@ -66,11 +60,11 @@ namespace ScubyNet.obj
 		public double AngleTo(Vector2D vV) { return this.Add(vV.Inv()).Angle; }
 		
 		public double VirtualAngleTo(Vector2D v1) {
-			double x = (v1.x < MAX_X/2) ? MAX_X:-MAX_X;
-			double y = (v1.y < MAX_Y/2) ? MAX_Y:-MAX_Y;
-			Vector2D v2 = Add(x, 0.0);
-			Vector2D v3 = Add(0.0, y); //new Point(voPoint.PosX, voPoint.PosY + y); 
-			Vector2D v4 = Add(x,   y); // new Point(voPoint.PosX + x, voPoint.PosY + y);
+			double dx = (v1.x < (MAX_X/2.0)) ? MAX_X : -MAX_X;
+			double dy = (v1.y < (MAX_Y/2.0)) ? MAX_Y : -MAX_Y;
+			Vector2D v2 = v1.Add( dx, 0.0);
+			Vector2D v3 = v1.Add(0.0,  dy); 
+			Vector2D v4 = v1.Add( dx,  dy); 
 			double angle = AngleTo(v1);
 			double dist  = DistanceTo(v1);
 			double dist2 = DistanceTo(v2); if (dist2 < dist) { angle = AngleTo(v2); dist = dist2; }

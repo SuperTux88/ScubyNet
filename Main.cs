@@ -58,6 +58,8 @@ namespace ScubyNet
 			Console.WriteLine(b.DistanceTo(a));
 			Console.WriteLine(a.VirtualDistanceTo(b));
 			Console.WriteLine(b.VirtualDistanceTo(a));
+			Console.WriteLine(a.AngleTo(b));
+			Console.WriteLine(b.AngleTo(a));
 			
 			
 			//Console.WriteLine (Math.Atan2(  0.0,  1.0 ));
