@@ -26,7 +26,7 @@ Funktionen:
 
 !SPAWN:
 
-DANGER = [menge] [submenge] BY (MIN|max) [order] MATCHING|IN|IS in range
+DANGER = [menge] [submenge] BY (MIN|max) [order]
 
 // menge     = (ALL) OTHER OUR MY 
 // submenge  = PLAYER SHOT (ENTITY) COLLISION

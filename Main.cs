@@ -44,12 +44,12 @@ namespace ScubyNet
 			mc.mcConnections.Add(mc.c.ID, mc.c);
 			for (int i=0;i<	4; i++) {
 				Connection oC = new Connection(sName, sURL, lPort);
+				mc.moWorld.RegisterBot(oScript, oC);
 				mc.mcConnections.Add(oC.ID, oC);
 				new Thread(new ThreadStart(new DummyReader(oC).Read)).Start();
 			}
 					
 			new Thread(new ThreadStart(mc.ProcessPackages)).Start();
-			
 			
 		}
 		
@@ -69,8 +69,6 @@ namespace ScubyNet
 				Console.WriteLine("Player " + p.Name + "(" + p.ID + ") fired a shot"); 
 			else
 				p.Shot.ShotCeased += ShotCease;
-			
-			Console.WriteLine(p.Shot.Speed);
 		}
 		
 		private void ShotCease(Shot s) {

@@ -1,13 +1,13 @@
 Ein Testbot-Script um grundlegende Funktionenu testen:
-
+nduiaetreuia
 
 
 itsnotpython
 
 
-!ENTER
-	? _ = *
-	move
+!ENTER / MY PLAYER
+	? _ != *  
+		move
 	.
 
 

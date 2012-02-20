@@ -27,7 +27,7 @@ namespace ScubyNet.obj
         }
 		
 		public Point Add(Point voP) {
-			
+			return new Point(this.PosX + voP.PosX, this.PosY + voP.PosY);
 		}
 
         public double getDistanceTo(Point voPoint) {

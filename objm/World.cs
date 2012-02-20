@@ -140,6 +140,7 @@ namespace ScubyNet.obj
 				return oRet;
 			}
 		}
+		public Dictionary<long, Shot> Shots { get { return mcoShots; } }
 		
 	}
 }
