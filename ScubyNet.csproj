@@ -91,6 +91,7 @@
     <Compile Include="inp\fkt\FktHit.cs" />
     <Compile Include="inp\fkt\FktDist.cs" />
     <Compile Include="inp\events\EventEnter.cs" />
+    <Compile Include="inp\cmd\CmdStart.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />

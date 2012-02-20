@@ -20,7 +20,23 @@ namespace ScubyNet.inp.cmd
 		
 		public override void Run (List<string> vlsParams, Connection voConn) 
 		{
-			
+			lock (voConn) {	
+				foreach (string param in vlsParams) {
+					if (param.Equals("move")) {
+						voConn.NextAction.Move = false;
+					}
+					if (param.Equals("left")) {
+						voConn.NextAction.Left = false;
+					}
+					if (param.Equals("right")) {
+						voConn.NextAction.Right = false;
+					}
+					if (param.Equals("fire")) {
+						voConn.NextAction.Fire = false;
+					}
+						
+				}
+			}
 		}
 	}
 }
